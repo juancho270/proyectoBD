@@ -9,6 +9,6 @@ package logica;
  *
  * @author root
  */
-public class TipoTarjeta {
+public class Estacion {
     
 }
