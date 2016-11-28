@@ -5,10 +5,12 @@
  */
 package controlador;
 
+import accesoDatos.DAOCliente;
+
 /**
  *
  * @author root
  */
 public class ControladorCliente {
-    
+    DAOCliente daoCliente;
 }
