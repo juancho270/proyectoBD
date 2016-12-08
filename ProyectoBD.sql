@@ -10,7 +10,7 @@
 DROP TABLE if exists RUTA CASCADE;
 CREATE TABLE  RUTA 
    (	nombre VARCHAR(30) NOT NULL PRIMARY KEY,
-	descripcion VARCHAR(100)
+	descripcion VARCHAR(100),fecha_inicio date, fecha_fenal 	date, franja_horaria VARCHAR(20)
    );
 
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -31,6 +31,14 @@ CREATE TABLE  TARJETA
 	saldo INTEGER,
 	estado BOOLEAN,
 	CONSTRAINT TARJETA_PK PRIMARY KEY (tarjeta_id)
+   );
+
+--------------------------------------------------------------------------------------------------------------------------------
+DROP TABLE if exists T_PERSONALIZADA CASCADE;
+CREATE TABLE  T_PERSONALIZADA 
+   (	tarjeta_id INTEGER NOT NULL,
+	avances_disponibles INTEGER,
+	CONSTRAINT T_PERSONALIZADA_PK PRIMARY KEY (tarjeta_id),
    );
 
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -55,38 +63,17 @@ CREATE TABLE  EMPLEADO
 	nombre VARCHAR(15),
 	apellido VARCHAR(15),
 	telefono INTEGER,
+	tipo_empleado VARCHAR(25),
 	CONSTRAINT EMPLEADO_PK PRIMARY KEY (empleado_id)
    );
 
-------------------------------------------------------------------------------------------------------------------------------------------
-DROP TABLE if exists DIRECTOR_ESTACION CASCADE;
-CREATE TABLE  DIRECTOR_ESTACION 
-   (	id-empleado-dir INTEGER NOT NULL,
-	CONSTRAINT DIRECTOR_ESTACION_PK PRIMARY KEY (id-empleado-dir),
-        CONSTRAINT id-empleado-dir_fk FOREIGN KEY (id-empleado-dir) REFERENCES EMPLEADO (empleado_id)
-   );
------------------------------------------------------------------------------------------------------------------------------
-
-DROP TABLE if exists AUX_SERVICIO CASCADE;
-CREATE TABLE  AUX_SERVICIO 
-   (	id-empleado-aux INTEGER NOT NULL,
-	CONSTRAINT DIRECTOR_ESTACION_PK PRIMARY KEY (id-empleado-aux),
-        CONSTRAINT id-empleado-aux_fk FOREIGN KEY (id-empleado-aux) REFERENCES EMPLEADO (empleado_id)
-   );
------------------------------------------------------------------------------------------------------------------------------
-DROP TABLE if exists CONDUCTOR CASCADE;
-CREATE TABLE  CONDUCTOR 
-   (	id-empleado-conductor INTEGER NOT NULL,
-	CONSTRAINT DIRECTOR_ESTACION_PK PRIMARY KEY (id-empleado-conductor),
-        CONSTRAINT id-empleado-conductor_fk FOREIGN KEY (id-empleado-conductor) REFERENCES EMPLEADO (empleado_id)
-   );
 -----------------------------------------------------------------------------------------------------------------------------
 DROP TABLE if exists ESTACION CASCADE;
 CREATE TABLE  ESTACION 
    (	nombre_estacion VARCHAR(30) NOT NULL,
 	director_id INTEGER,
 	CONSTRAINT ESTACION_PK PRIMARY KEY (nombre_estacion),
-	CONSTRAINT director_id_fk FOREIGN KEY (director_id) REFERENCES DIRECTOR_ESTACION (id-empleado-dir)          
+	CONSTRAINT director_id_fk FOREIGN KEY (director_id) REFERENCES EMPLEADO(empleado_id)          
    );
 
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -108,7 +95,7 @@ CREATE TABLE  MANEJO_BUSES
 	placa_bus INTEGER NOT NULL,
 	turno TIME NOT NULL,
 	CONSTRAINT MANEJO_BUS_PK PRIMARY KEY (conductor_id, placa_bus),
-        CONSTRAINT conductor_id_fk FOREIGN KEY (conductor_id) REFERENCES CONDUCTOR (id-empleado-conductor),
+        CONSTRAINT conductor_id_fk FOREIGN KEY (conductor_id) REFERENCES EMPLEADO (empleado_id),
         CONSTRAINT placa_bus_fk FOREIGN KEY (placa_bus) REFERENCES BUS (placa)  
    );
 
@@ -125,14 +112,8 @@ CREATE TABLE  VENTA_TARJETAS
         CONSTRAINT tarjeta_id_fk FOREIGN KEY (tarjeta_id) REFERENCES TARJETA (tarjeta_id)  
    );
 
-------------------------------------------------------------------------------------------------------------------------------------------
 
-DROP TABLE if exists T_PERSONALIZADA CASCADE;
-CREATE TABLE  T_PERSONALIZADA 
-   (	tarjeta_id INTEGER NOT NULL,
-	avances_disponibles INTEGER,
-	CONSTRAINT T_PERSONALIZADA_PK PRIMARY KEY (tarjeta_id),
-   );
+
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -146,14 +127,9 @@ CREATE TABLE  CLIENTE
         CONSTRAINT tarjeta_id_fk FOREIGN KEY (tarjeta_id) REFERENCES T_PERSONALIZADA (tarjeta_id)  
    );
 
-------------------------------------------------------------------------------------------------------------------------------------------
 
 
-DROP TABLE if exists T_GENERICA CASCADE;
-CREATE TABLE  T_GENERICA 
-   (	id_tarjeta INTEGER NOT NULL,
-	CONSTRAINT T_GENERICA_PK PRIMARY KEY (id_tarjeta)    
-   );
+
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
