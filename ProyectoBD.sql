@@ -8,7 +8,7 @@
 --Juan Carlos Viteri --1427543
 ------------------------------------------------------------------------------------------------------------------------------------------
 DROP TABLE if exists RUTA CASCADE;
-CREATE TABLE  RUTA 
+CREATE TABLE  RUTA
    (	nombre VARCHAR(30) NOT NULL PRIMARY KEY,
 	descripcion VARCHAR(100),fecha_inicio date, fecha_fenal 	date, franja_horaria VARCHAR(20)
    );
@@ -16,8 +16,9 @@ CREATE TABLE  RUTA
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 DROP TABLE if exists BUS CASCADE;
-CREATE TABLE  BUS 
-   (	placa INTEGER NOT NULL,
+CREATE TABLE  BUS
+   (
+  placa VARCHAR(8) NOT NULL,
 	tipo INTEGER,
 	nombre_ruta VARCHAR(30),
 	CONSTRAINT BUS_PK PRIMARY KEY (placa),
@@ -26,8 +27,9 @@ CREATE TABLE  BUS
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 DROP TABLE if exists TARJETA CASCADE;
-CREATE TABLE  TARJETA 
-   (	tarjeta_id INTEGER NOT NULL,
+CREATE TABLE  TARJETA
+   (
+  tarjeta_id INTEGER NOT NULL,
 	saldo INTEGER,
 	estado BOOLEAN,
 	CONSTRAINT TARJETA_PK PRIMARY KEY (tarjeta_id)
@@ -35,8 +37,9 @@ CREATE TABLE  TARJETA
 
 --------------------------------------------------------------------------------------------------------------------------------
 DROP TABLE if exists T_PERSONALIZADA CASCADE;
-CREATE TABLE  T_PERSONALIZADA 
-   (	tarjeta_id INTEGER NOT NULL,
+CREATE TABLE  T_PERSONALIZADA
+   (
+  tarjeta_id INTEGER NOT NULL,
 	avances_disponibles INTEGER,
 	CONSTRAINT T_PERSONALIZADA_PK PRIMARY KEY (tarjeta_id),
    );
@@ -44,21 +47,23 @@ CREATE TABLE  T_PERSONALIZADA
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 DROP TABLE if exists VIAJE CASCADE;
-CREATE TABLE  VIAJE 
-   (	fecha DATE NOT NULL,
+CREATE TABLE  VIAJE
+   (
+  fecha DATE NOT NULL,
 	hora TIME NOT NULL,
 	tarjeta_id INTEGER NOT NULL,
 	placa_bus INTEGER NOT NULL,
 	CONSTRAINT VIAJE_PK PRIMARY KEY (fecha, hora, tarjeta_id, placa_bus),
-        CONSTRAINT placa_bus_fk FOREIGN KEY (placa_bus) REFERENCES BUS (placa),
-        CONSTRAINT tarjeta_id_fk FOREIGN KEY (tarjeta_id) REFERENCES TARJETA (tarjeta_id)  
+  CONSTRAINT placa_bus_fk FOREIGN KEY (placa_bus) REFERENCES BUS (placa),
+  CONSTRAINT tarjeta_id_fk FOREIGN KEY (tarjeta_id) REFERENCES TARJETA (tarjeta_id)
    );
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 DROP TABLE if exists EMPLEADO CASCADE;
-CREATE TABLE  EMPLEADO 
-   (	empleado_id INTEGER NOT NULL,
+CREATE TABLE  EMPLEADO
+   (
+  empleado_id INTEGER NOT NULL,
 	cedula INTEGER NOT NULL,
 	nombre VARCHAR(15),
 	apellido VARCHAR(15),
@@ -69,47 +74,51 @@ CREATE TABLE  EMPLEADO
 
 -----------------------------------------------------------------------------------------------------------------------------
 DROP TABLE if exists ESTACION CASCADE;
-CREATE TABLE  ESTACION 
-   (	nombre_estacion VARCHAR(30) NOT NULL,
+CREATE TABLE  ESTACION
+   (
+  nombre_estacion VARCHAR(30) NOT NULL,
 	director_id INTEGER,
 	CONSTRAINT ESTACION_PK PRIMARY KEY (nombre_estacion),
-	CONSTRAINT director_id_fk FOREIGN KEY (director_id) REFERENCES EMPLEADO(empleado_id)          
+	CONSTRAINT director_id_fk FOREIGN KEY (director_id) REFERENCES EMPLEADO(empleado_id)
    );
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 DROP TABLE if exists RUTA_ESTACION CASCADE;
-CREATE TABLE  RUTA_ESTACION 
-   (	id_ruta VARCHAR(30) NOT NULL,
-    	id_estacion VARCHAR(30) NOT NULL,
-	CONSTRAINT RUTA_ESTACION_PK PRIMARY KEY (id-ruta,id-estacion),
-        CONSTRAINT id_ruta_fk FOREIGN KEY (id-ruta) REFERENCES RUTA (nombre),
-        CONSTRAINT id_estacion_fk FOREIGN KEY (id_estacion_fk) REFERENCES ESTACION (nombre_estacion)  
+CREATE TABLE  RUTA_ESTACION
+   (
+     id_ruta VARCHAR(30) NOT NULL,
+     id_estacion VARCHAR(30) NOT NULL,
+	   CONSTRAINT RUTA_ESTACION_PK PRIMARY KEY (id-ruta,id-estacion),
+     CONSTRAINT id_ruta_fk FOREIGN KEY (id-ruta) REFERENCES RUTA (nombre),
+     CONSTRAINT id_estacion_fk FOREIGN KEY (id_estacion_fk) REFERENCES ESTACION (nombre_estacion)
    );
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 DROP TABLE if exists MANEJO_BUSES CASCADE;
 CREATE TABLE  MANEJO_BUSES
-   (	conductor_id INTEGER NOT NULL,
+   (
+  conductor_id INTEGER NOT NULL,
 	placa_bus INTEGER NOT NULL,
 	turno TIME NOT NULL,
 	CONSTRAINT MANEJO_BUS_PK PRIMARY KEY (conductor_id, placa_bus),
-        CONSTRAINT conductor_id_fk FOREIGN KEY (conductor_id) REFERENCES EMPLEADO (empleado_id),
-        CONSTRAINT placa_bus_fk FOREIGN KEY (placa_bus) REFERENCES BUS (placa)  
+  CONSTRAINT conductor_id_fk FOREIGN KEY (conductor_id) REFERENCES EMPLEADO (empleado_id),
+  CONSTRAINT placa_bus_fk FOREIGN KEY (placa_bus) REFERENCES BUS (placa)
    );
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 DROP TABLE if exists VENTA_TARJETAS CASCADE;
-CREATE TABLE  VENTA_TARJETAS 
-   (	auxiliar_id INTEGER NOT NULL,
+CREATE TABLE  VENTA_TARJETAS
+   (
+  auxiliar_id INTEGER NOT NULL,
 	nombre_estacion VARCHAR(30) NOT NULL,
 	tarjeta_id INTEGER NOT NULL,
 	CONSTRAINT VENTA_TARJETA_PK PRIMARY KEY (auxiliar_id, nombre_estacion),
-        CONSTRAINT auxiliar_id_fk FOREIGN KEY (auxiliar_id) REFERENCES AUX_SERVICIO (id-empleado-aux),
+  CONSTRAINT auxiliar_id_fk FOREIGN KEY (auxiliar_id) REFERENCES AUX_SERVICIO (id-empleado-aux),
 	CONSTRAINT nombre_est_fk FOREIGN KEY (nombre_estacion) REFERENCES ESTACION (nombre_estacion),
-        CONSTRAINT tarjeta_id_fk FOREIGN KEY (tarjeta_id) REFERENCES TARJETA (tarjeta_id)  
+  CONSTRAINT tarjeta_id_fk FOREIGN KEY (tarjeta_id) REFERENCES TARJETA (tarjeta_id)
    );
 
 
@@ -118,13 +127,13 @@ CREATE TABLE  VENTA_TARJETAS
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 DROP TABLE if exists CLIENTE CASCADE;
-CREATE TABLE  CLIENTE 
+CREATE TABLE  CLIENTE
    (	cedula INTEGER NOT NULL,
 	nombres VARCHAR (20),
 	telefono INTEGER,
-	tarjeta_id INTEGER, 
+	tarjeta_id INTEGER,
 	CONSTRAINT CLIENTE_PK PRIMARY KEY (cedula),
-        CONSTRAINT tarjeta_id_fk FOREIGN KEY (tarjeta_id) REFERENCES T_PERSONALIZADA (tarjeta_id)  
+        CONSTRAINT tarjeta_id_fk FOREIGN KEY (tarjeta_id) REFERENCES T_PERSONALIZADA (tarjeta_id)
    );
 
 
@@ -134,7 +143,7 @@ CREATE TABLE  CLIENTE
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 DROP TABLE if exists RECLAMOS CASCADE;
-CREATE TABLE  RECLAMOS 
+CREATE TABLE  RECLAMOS
    (	num_tiquete INTEGER NOT NULL,
 	fecha DATE,
 	motivo VARCHAR,
@@ -145,17 +154,17 @@ CREATE TABLE  RECLAMOS
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 DROP TABLE if exists MEDIDAS CASCADE;
-CREATE TABLE  MEDIDAS 
+CREATE TABLE  MEDIDAS
    (	num_tiquete INTEGER NOT NULL,
 	medida VARCHAR,
 	CONSTRAINT MEDIDAS_PK PRIMARY KEY (num_tiquete),
-        CONSTRAINT num_tiquete_fk FOREIGN KEY (num_tiquete) REFERENCES RECLAMOS (num_tiquete)  
+        CONSTRAINT num_tiquete_fk FOREIGN KEY (num_tiquete) REFERENCES RECLAMOS (num_tiquete)
    );
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 DROP TABLE if exists RECLAMOS_REALIZADOS CASCADE;
-CREATE TABLE  RECLAMOS_REALIZADOS 
+CREATE TABLE  RECLAMOS_REALIZADOS
    (	num_tiquete INTEGER NOT NULL,
 	auxiliar_id INTEGER NOT NULL,
 	tarjeta_id INTEGER NOT NULL,
@@ -164,5 +173,3 @@ CREATE TABLE  RECLAMOS_REALIZADOS
         CONSTRAINT auxiliar_id_fk FOREIGN KEY (auxiliar_id) REFERENCES AUX_SERVICIO (id-empleado-aux),
 	CONSTRAINT tarjeta_id_fk FOREIGN KEY (tarjeta_id) REFERENCES TARJETA (tarjeta_id)
    );
-
-
