@@ -1,4 +1,4 @@
-
+﻿
 --Universidad del Valle
 --Escuela de Ingenieria de Sistemas
 --Bases de Datos
@@ -17,7 +17,7 @@ CREATE TABLE  RUTA
 
 DROP TABLE if exists BUS CASCADE;
 CREATE TABLE  BUS 
-   (	placa INTEGER NOT NULL,
+   (	placa VARCHAR(15) NOT NULL,
 	tipo INTEGER,
 	nombre_ruta VARCHAR(30),
 	CONSTRAINT BUS_PK PRIMARY KEY (placa),
