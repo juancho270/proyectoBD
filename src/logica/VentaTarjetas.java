@@ -21,7 +21,7 @@ public class VentaTarjetas {
     }
 
     public int getAuxiliar_id(){
-      return = auxiliar_id;
+      return auxiliar_id;
     }
 
     public String getNombre_estacion(){

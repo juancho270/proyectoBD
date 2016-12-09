@@ -10,7 +10,7 @@ package logica;
  * @author root
  */
 public class ManejoBuses {
-    int coductor_id;
+    int conductor_id;
     String placa_bus;
     String turno;
 

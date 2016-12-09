@@ -17,15 +17,23 @@ public class Empleado {
     int telefono;
     String tipo_empleado;
 
-    public void Empleado(){
 
+    public Empleado(int empleado_id, int cedula, String nombre, String apellido, int telefono, String tipo_empleado) {
+        this.empleado_id = empleado_id;
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.tipo_empleado = tipo_empleado;
     }
+
+     
     public  int getEmpleado_id(){
       return empleado_id;
     }
-
+    
     public int getCedula(){
-      retunr cedula;
+      return cedula;
     }
 
     public String getNombre(){

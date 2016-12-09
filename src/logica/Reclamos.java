@@ -14,5 +14,41 @@ public class Reclamos {
     String date;
     String motivo;
     String descripcion;
+
+    public Reclamos(int num_tiquete, String date, String motivo, String descripcion) {
+        this.num_tiquete = num_tiquete;
+        this.date = date;
+        this.motivo = motivo;
+        this.descripcion = descripcion;
+    }
+
+    public int getNum_tiquete() {
+        return num_tiquete;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setNum_tiquete(int num_tiquete) {
+        this.num_tiquete = num_tiquete;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
     
 }

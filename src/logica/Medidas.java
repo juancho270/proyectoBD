@@ -12,4 +12,27 @@ package logica;
 public class Medidas {
     int num_tiquete;
     String medidas;
+
+    public Medidas(int num_tiquete, String medidas) {
+        this.num_tiquete = num_tiquete;
+        this.medidas = medidas;
+    }
+
+    public int getNum_tiquete() {
+        return num_tiquete;
+    }
+
+    public String getMedidas() {
+        return medidas;
+    }
+
+    public void setNum_tiquete(int num_tiquete) {
+        this.num_tiquete = num_tiquete;
+    }
+
+    public void setMedidas(String medidas) {
+        this.medidas = medidas;
+    }
+    
+    
 }

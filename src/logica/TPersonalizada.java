@@ -41,6 +41,6 @@ public class TPersonalizada {
     }
 
     public void setAvances_disponibles(int avances){
-      this.avancesDisponibles = avances;
+      this.avances_disponibles = avances;
     }
 }

@@ -35,6 +35,6 @@ public class Viaje {
   }
 
   public String getPlaca_bus(){
-    retunr placa_bus;
+    return placa_bus;
   }
 }

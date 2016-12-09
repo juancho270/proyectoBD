@@ -13,7 +13,7 @@ public class Estacion {
     String nombre_estacion;
     int director_id;
 
-    public Estacion(String nomre, int director_id){
+    public Estacion(String nombre, int director_id){
       this.nombre_estacion = nombre;
       this.director_id = director_id;
     }
