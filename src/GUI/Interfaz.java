@@ -24,7 +24,7 @@ public class Interfaz extends javax.swing.JFrame {
         add(panel); */
         
         implementacion = obj;         
-        jButton1.setIcon(new ImageIcon("src/Fotos/Botones Principales/pasajeros1.png"));
+        jButton1.setIcon(new ImageIcon("src/Fotos/Botones Principales/pasajeros.png"));
         jButton2.setIcon(new ImageIcon("src/Fotos/Botones Principales/conductor.png"));
         jButton3.setIcon(new ImageIcon("src/Fotos/Botones Principales/empleados.png"));
         
