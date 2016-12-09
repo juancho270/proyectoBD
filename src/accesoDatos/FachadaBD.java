@@ -43,7 +43,7 @@ public class FachadaBD {
 
         }//end connectar
     
-      public Connection getConnetion(){
+      public Connection getConnection(){
             if (conexion == null) {
                 return this.conectar();
             }
@@ -53,7 +53,7 @@ public class FachadaBD {
             
         }
         
-        public void closeConection(Connection c){
+        public void closeConnection(Connection c){
             try{
                 if (conexion != null){
                     c.close();
