@@ -10,5 +10,9 @@ package logica;
  * @author root
  */
 public class Reclamos {
+    int num_tiquete;
+    String date;
+    String motivo;
+    String descripcion;
     
 }

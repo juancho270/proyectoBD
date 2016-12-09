@@ -10,7 +10,7 @@ package logica;
  * @author root
  */
 public class Ruta {
-    
+
    String nombre;
    String Descripcion;
 
@@ -34,6 +34,6 @@ public class Ruta {
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
     }
-   
-   
+
+
 }

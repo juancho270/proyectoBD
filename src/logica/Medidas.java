@@ -10,5 +10,6 @@ package logica;
  * @author root
  */
 public class Medidas {
-    
+    int num_tiquete;
+    String medidas;
 }

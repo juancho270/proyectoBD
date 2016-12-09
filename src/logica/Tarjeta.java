@@ -10,5 +10,37 @@ package logica;
  * @author root
  */
 public class Tarjeta {
-    
+    int tarjeta_id;
+    int saldo;
+    boolean estado;
+
+    public Tarjeta(int tarjeta_id, int saldo, boolean estado){
+      this.tarjeta_id = tarjeta_id;
+      this.saldo = saldo;
+      this.estado = estado;
+    }
+
+    public int getTarjeta_id(){
+      return tarjeta_id;
+    }
+
+    public int getSaldo(){
+      return saldo;
+    }
+
+    public boolean getEstado(){
+      return estado;
+    }
+
+    public void setTarjeta_id(int id){
+      this.tarjeta_id = id;
+    }
+
+    public void setSaldo(int saldo){
+      this.saldo = saldo;
+    }
+
+    public void setEstado(boolean est){
+      this.estado = est;
+    }
 }

@@ -10,5 +10,7 @@ package logica;
  * @author root
  */
 public class ReclamosRealizados {
-    
+    int num_tiquete;
+    int auxiliar_id;
+    int tarjeta_id;
 }
