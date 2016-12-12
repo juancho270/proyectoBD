@@ -97,12 +97,29 @@ public class DAOBus {
             fachada.closeConnection(conn);
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "         Ha ocurrido un problema, \n consulta con la base de datos fallida", "AutosABC", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "         Ha ocurrido un problema, \n consulta con la base de datos fallida", "SIT", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un problema!!", "AutosABC", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un problema!!", "SIT", JOptionPane.ERROR_MESSAGE);
         }
          
          return listaBuses;
+    }
+    
+    public int cambiarRutaBus(Bus bus){
+        String update_statement = "UPDATE usuarios SET ruta = '" + bus.getNombreRuta()+ "' WHERE placa = '" + bus.getPlaca()+"'";
+        int numFilas = -1;
+        try {
+            Connection conn = fachada.getConnection();
+            Statement sentencia = conn.createStatement();
+            numFilas = sentencia.executeUpdate(update_statement);
+            conn.close();
+            fachada.closeConnection(conn);
+            return numFilas;
+        } catch (SQLException ex) {
+            return -2;
+        } catch (Exception ex) {
+            return -3;
+        }
     }
 
 }

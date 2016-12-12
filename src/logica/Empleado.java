@@ -27,6 +27,10 @@ public class Empleado {
         this.tipo_empleado = tipo_empleado;
     }
 
+    public Empleado() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
      
     public  int getEmpleado_id(){
       return empleado_id;
@@ -59,4 +63,22 @@ public class Empleado {
     public void setApellido(String apellido){
       this.apellido = apellido;
     }
+
+    public void setEmpleado_id(int empleado_id) {
+        this.empleado_id = empleado_id;
+    }
+
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setTipo_empleado(String tipo_empleado) {
+        this.tipo_empleado = tipo_empleado;
+    }
+    
+    
 }
