@@ -30,6 +30,18 @@ public class Cliente {
       return cedula;
     }
 
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setTarjeta_id(int tarjeta_id) {
+        this.tarjeta_id = tarjeta_id;
+    }
+
     public String getNombre(){
       return nombre;
     }
