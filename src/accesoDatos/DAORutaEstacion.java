@@ -5,10 +5,25 @@
  */
 package accesoDatos;
 
+import java.util.ArrayList;
+import logica.RutaEstacion;
+
 /**
  *
  * @author root
  */
 public class DAORutaEstacion {
+
+    public int GuardarRutaEstacion(RutaEstacion p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public RutaEstacion consultarRutaEstacion(String id_r) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ArrayList<RutaEstacion> listarRutaEstacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

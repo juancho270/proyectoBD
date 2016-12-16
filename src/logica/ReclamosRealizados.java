@@ -20,6 +20,10 @@ public class ReclamosRealizados {
         this.tarjeta_id = tarjeta_id;
     }
 
+    public ReclamosRealizados() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getNum_tiquete() {
         return num_tiquete;
     }

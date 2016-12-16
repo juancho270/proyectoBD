@@ -198,4 +198,8 @@ public class DAOEmpleado {
         }
     }
     
+    public void cerrarConexionBD(){
+        fachada.closeConnection(fachada.getConnection());
+    }
+    
 }

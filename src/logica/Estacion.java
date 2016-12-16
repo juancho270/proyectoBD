@@ -18,6 +18,10 @@ public class Estacion {
       this.director_id = director_id;
     }
 
+    public Estacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getNombre_estacion(){
       return nombre_estacion;
     }

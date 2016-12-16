@@ -22,6 +22,10 @@ public class Cliente {
       this.tarjeta_id = tarjeta_id;
     }
 
+    public Cliente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getCedula(){
       return cedula;
     }

@@ -20,6 +20,10 @@ public class ManejoBuses {
       this.turno = turno;
     }
 
+    public ManejoBuses() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getConductor_id(){
       return conductor_id;
     }

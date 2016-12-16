@@ -5,10 +5,25 @@
  */
 package accesoDatos;
 
+import java.util.ArrayList;
+import logica.Cliente;
+
 /**
  *
  * @author root
  */
 public class DAOCliente {
+
+    public int GuardarCliente(Cliente p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Cliente consultarCliente(int cedula) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ArrayList<Cliente> listarClientes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

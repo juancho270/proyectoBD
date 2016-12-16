@@ -20,6 +20,10 @@ public class Tarjeta {
       this.estado = estado;
     }
 
+    public Tarjeta() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getTarjeta_id(){
       return tarjeta_id;
     }

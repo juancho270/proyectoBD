@@ -5,10 +5,25 @@
  */
 package accesoDatos;
 
+import java.util.ArrayList;
+import logica.Viaje;
+
 /**
  *
  * @author root
  */
 public class DAOViaje {
+
+    public int GuardarViaje(Viaje p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Viaje consultarViaje(int tarjeta_id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ArrayList<Viaje> listarViaje() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

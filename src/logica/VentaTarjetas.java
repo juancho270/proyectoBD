@@ -20,6 +20,10 @@ public class VentaTarjetas {
       this.tarjeta_id = tarjeta_id;
     }
 
+    public VentaTarjetas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getAuxiliar_id(){
       return auxiliar_id;
     }
