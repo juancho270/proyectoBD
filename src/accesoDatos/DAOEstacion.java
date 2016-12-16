@@ -20,9 +20,10 @@ import logica.Estacion;
 public class DAOEstacion {
     FachadaBD fachada;
 
-    public DAOEstacion(FachadaBD fachada) {
+    public DAOEstacion() {
         fachada = new FachadaBD();
     }
+
     public int GuardarEstacion(Estacion est) {
          String sql_guardar;
         sql_guardar="INSERT INTO ESTACION VALUES (" +
