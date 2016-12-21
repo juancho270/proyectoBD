@@ -2045,7 +2045,8 @@ public class Interfaz extends javax.swing.JFrame {
     private void jComboBox17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox17ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox17ActionPerformed
-
+ 
+    //
     private void jButton43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton43ActionPerformed
         DAOEstacion est = new DAOEstacion();
         Estacion esta = new Estacion();
