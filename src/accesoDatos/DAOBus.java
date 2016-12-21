@@ -101,13 +101,14 @@ public class DAOBus {
          return listaBuses;
     }
     
-    public int cambiarRutaBus(Bus bus){
-        String update_statement = "UPDATE BUS SET ruta = '" + bus.getNombreRuta()+ "' WHERE placa = '" + bus.getPlaca()+"'";
+    public int cambiarBus(Bus bus){
+        String update_statement = "UPDATE BUS SET tipo = " + bus.getTipo() + ", nombre_ruta = '" + bus.getNombreRuta() + "' WHERE placa = '" + bus.getPlaca()+"'";
         int numFilas = -1;
         try {
             Connection conn = fachada.getConnection();
             Statement sentencia = conn.createStatement();
             numFilas = sentencia.executeUpdate(update_statement);
+            System.out.println("up" + numFilas);
             conn.close();
             fachada.closeConnection(conn);
             return numFilas;
@@ -116,6 +117,8 @@ public class DAOBus {
         } catch (Exception ex) {
             return -3;
         }
+        
+        
     }
     
     public int eliminarBus(String placa){

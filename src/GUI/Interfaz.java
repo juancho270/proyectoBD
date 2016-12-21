@@ -225,6 +225,7 @@ public class Interfaz extends javax.swing.JFrame {
         jButton36 = new javax.swing.JButton();
         jComboBox9 = new javax.swing.JComboBox();
         jLabel53 = new javax.swing.JLabel();
+        jButton41 = new javax.swing.JButton();
         jFrameRuta = new javax.swing.JFrame();
         jLabel54 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
@@ -611,6 +612,12 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel33.setText("Id Usuario");
 
         jLabel34.setText("Turno");
+
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
 
         jButton23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1300,33 +1307,41 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel53.setText("Ruta: ");
 
+        jButton41.setText("Modificar");
+        jButton41.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton41ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jFrameBusLayout = new javax.swing.GroupLayout(jFrameBus.getContentPane());
         jFrameBus.getContentPane().setLayout(jFrameBusLayout);
         jFrameBusLayout.setHorizontalGroup(
             jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrameBusLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
                 .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jFrameBusLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton33)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton36))
-                    .addGroup(jFrameBusLayout.createSequentialGroup()
-                        .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jFrameBusLayout.createSequentialGroup()
-                                .addComponent(jLabel51)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField16))
+                        .addGap(34, 34, 34)
+                        .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jFrameBusLayout.createSequentialGroup()
                                 .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel52)
                                     .addComponent(jLabel53))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jComboBox8, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox9, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 9, Short.MAX_VALUE)))
+                                    .addComponent(jComboBox9, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jFrameBusLayout.createSequentialGroup()
+                                .addComponent(jLabel51)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField16))))
+                    .addGroup(jFrameBusLayout.createSequentialGroup()
+                        .addGap(0, 18, Short.MAX_VALUE)
+                        .addComponent(jButton33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton41)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton36)))
                 .addContainerGap())
         );
         jFrameBusLayout.setVerticalGroup(
@@ -1344,11 +1359,12 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel53))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton33)
+                    .addComponent(jButton41)
                     .addComponent(jButton36))
-                .addGap(24, 24, 24))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jLabel54.setText("Nombre:");
@@ -1594,6 +1610,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
+        jButton41.setEnabled(false);
         DAORuta ruta = new DAORuta();
         jFrameBus.setVisible(true);
         jFrameBus.pack();
@@ -1846,6 +1863,89 @@ public class Interfaz extends javax.swing.JFrame {
         jComboBox6.setModel(m1);
     }//GEN-LAST:event_jButton25ActionPerformed
 
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        DAORuta ruta = new DAORuta();
+        if(jComboBox4.getSelectedItem().equals("Seleccione un bus")){
+            JOptionPane.showMessageDialog(null, "Seleccione una placa");
+            
+        }else{
+            jFrameBus.setVisible(true);
+            jFrameBus.pack();
+            ArrayList<Ruta> datos;
+            datos = ruta.listarRuta();
+            String[] dato = new String[datos.size() + 1];
+            for (int i = 0; i < datos.size(); i++) {
+            if (i == 0) {
+                dato[0] = "Seleccione una ruta";
+                dato[i + 1] = datos.get(i).getNombre();
+            } else {
+                dato[i + 1] = datos.get(i).getNombre();
+            }
+        }
+        DefaultComboBoxModel m1 = new DefaultComboBoxModel(dato);
+        jComboBox9.setModel(m1);
+        jTextField16.setText((String) jComboBox4.getSelectedItem());
+        jTextField16.setEnabled(false);
+        jButton36.setEnabled(false);
+        }
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton41ActionPerformed
+        DAOBus bus = new DAOBus();
+        Bus buse = new Bus();
+        boolean guardar_nombre = false;
+        boolean guardar_tipo = false;
+        boolean guardar_ruta = false;
+        
+        if (jTextField9.getText().isEmpty()) {
+            buse.setPlaca(jTextField16.getText());
+            guardar_nombre = true;
+        } else {
+              JOptionPane.showMessageDialog(null, "Placa no valida");
+        }
+        
+        if (jComboBox8.getSelectedItem() == "Articulados") {
+            buse.setTipo(1);
+            guardar_ruta = true;
+        } else {
+            if (jComboBox8.getSelectedItem() == "Padrones") {
+                buse.setTipo(2);
+                guardar_ruta = true;
+            } else {
+                if (jComboBox8.getSelectedItem() == "Alimentadores") {
+                    buse.setTipo(3);
+                    guardar_ruta = true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciones un tipo de bus");
+                }
+            }
+        }
+
+        String ruta = null;
+        if (jComboBox9.getSelectedIndex() != 0) {
+            ruta = (String) jComboBox9.getSelectedItem();
+            guardar_tipo = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una ruta");
+        }
+        buse.setNombreRuta(ruta);
+        if (guardar_tipo && guardar_nombre && guardar_ruta == true){
+        int numFilas = bus.cambiarBus(buse);
+        if (numFilas == 1) {
+
+            JOptionPane.showMessageDialog(null, "Bus guardado exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus");
+        }
+        }else{
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus,verifique los datos");
+        }
+        jFrameBus.setVisible(false);
+        jTextField16.setText("");
+        jComboBox8.setSelectedIndex(0);
+        jComboBox9.setSelectedIndex(0);
+    }//GEN-LAST:event_jButton41ActionPerformed
+
     /**
      * @param args the command line arguments
      * @throws java.io.IOException
@@ -1888,6 +1988,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton39;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton40;
+    private javax.swing.JButton jButton41;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
