@@ -21,8 +21,8 @@ public class DAOVentaTarjeta {
 
     FachadaBD fachada;
 
-    public DAOVentaTarjeta(FachadaBD fachada) {
-        this.fachada = fachada;
+    public DAOVentaTarjeta() {
+        fachada = new FachadaBD();
     }
 
     public int GuardarVentaTarjeta(VentaTarjetas p) {

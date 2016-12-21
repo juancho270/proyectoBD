@@ -81,13 +81,13 @@ public class DAOEmpleado {
     public ArrayList<Empleado> listarEmpleados(){
         Empleado unEmpleado;
         ArrayList<Empleado> listaEmpleados = new ArrayList<>();
-        String sql_select = "SELECT empleado_id, cedula, nombre, apellido, telefono, tipo_empleado FROM EMPLEADO";
+        String sql_select = "SELECT * FROM EMPLEADO;";
+        
         
          try {
             Connection conn = fachada.getConnection();
             Statement sentencia = conn.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql_select);
-            
             while(tabla.next()){
                 unEmpleado = new Empleado();
                 unEmpleado.setEmpleado_id(tabla.getInt(1));
@@ -96,7 +96,6 @@ public class DAOEmpleado {
                 unEmpleado.setApellido(tabla.getString(4));
                 unEmpleado.setTelefono(tabla.getInt(5));
                 unEmpleado.setTipo_empleado(tabla.getString(6));
-                 
                 listaEmpleados.add(unEmpleado);
             
             }

@@ -26,9 +26,9 @@ public class DAOEstacion {
 
     public int GuardarEstacion(Estacion est) {
          String sql_guardar;
-        sql_guardar="INSERT INTO ESTACION VALUES (" +
-                est.getNombre_estacion()+ ", " + 
-                est.getDirector_id()+ "' )";
+        sql_guardar="INSERT INTO ESTACION VALUES ('" +
+                est.getNombre_estacion()+ "', " + 
+                est.getDirector_id()+ " );";
         int numFilas = -1;
         try{
             Connection conn= fachada.getConnection();
@@ -74,7 +74,7 @@ public class DAOEstacion {
     public ArrayList<Estacion> listarEstaciones() {
          Estacion unaEstacion;
         ArrayList<Estacion> listaEstaciones = new ArrayList<>();
-        String sql_select = "SELECT * FROM ESTACION";
+        String sql_select = "SELECT nombre_estacion,director_id FROM ESTACION;";
         
          try {
             Connection conn = fachada.getConnection();

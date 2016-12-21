@@ -1,18 +1,23 @@
 package GUI;
 
-
 import GUI.Implementacion;
 import accesoDatos.DAOBus;
 import accesoDatos.DAOCliente;
+import accesoDatos.DAOEmpleado;
 import accesoDatos.DAOEstacion;
 import accesoDatos.DAORuta;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import logica.Bus;
 import logica.Cliente;
+import logica.Empleado;
 import logica.Estacion;
 import logica.Ruta;
 
@@ -24,55 +29,50 @@ public class Interfaz extends javax.swing.JFrame {
 
     //Constructor 
     public Interfaz(Implementacion obj) {
-        super();        
-        
+        super();
+
         initComponents();
         /* //inicialicion del panel que serviria para poner fondo a un panel pero no funciona :(
-        ImagenPanel panel=new ImagenPanel();
-        add(panel); */
-        
-        implementacion = obj;         
+         ImagenPanel panel=new ImagenPanel();
+         add(panel); */
+
+        implementacion = obj;
         jButton1.setIcon(new ImageIcon("src/Fotos/Botones Principales/pasajeros.png"));
         jButton2.setIcon(new ImageIcon("src/Fotos/Botones Principales/conductor.png"));
         jButton3.setIcon(new ImageIcon("src/Fotos/Botones Principales/empleados.png"));
-        
+
         this.setVisible(true);
         pack();
-        
-        
-        
+
         jButton22.setIcon(new ImageIcon("src/Fotos/Botones/+.jpg"));
         jButton27.setIcon(new ImageIcon("src/Fotos/Botones/+.jpg"));
-        jButton28.setIcon(new ImageIcon("src/Fotos/Botones/+.jpg"));        
+        jButton28.setIcon(new ImageIcon("src/Fotos/Botones/+.jpg"));
         jButton29.setIcon(new ImageIcon("src/Fotos/Botones/+.jpg"));
         jButton18.setIcon(new ImageIcon("src/Fotos/Botones/conf.jpg"));
         jButton19.setIcon(new ImageIcon("src/Fotos/Botones/conf.jpg"));
         jButton20.setIcon(new ImageIcon("src/Fotos/Botones/conf.jpg"));
-        jButton21.setIcon(new ImageIcon("src/Fotos/Botones/conf.jpg"));        
+        jButton21.setIcon(new ImageIcon("src/Fotos/Botones/conf.jpg"));
         jButton23.setIcon(new ImageIcon("src/Fotos/Botones/borrar.jpg"));
         jButton24.setIcon(new ImageIcon("src/Fotos/Botones/borrar.jpg"));
         jButton25.setIcon(new ImageIcon("src/Fotos/Botones/borrar.jpg"));
-        jButton26.setIcon(new ImageIcon("src/Fotos/Botones/borrar.jpg"));        
+        jButton26.setIcon(new ImageIcon("src/Fotos/Botones/borrar.jpg"));
         jButton30.setIcon(new ImageIcon("src/Fotos/Botones/ver.jpg"));
-        
-        jFrameDirectorOperativo.setVisible(true);
-        jFrameDirectorOperativo.pack();
+
     }
-    
+
     /* // una clase que cree para ponerle fondo a un panel pero no funciona :(
-    public class ImagenPanel extends JPanel{    
+     public class ImagenPanel extends JPanel{    
 
-        @Override
-        public void paintComponents(Graphics g) {
-            setOpaque(false);
-            Image imagen=new ImageIcon("src/Fotos/fondo.jpg").getImage();
-            repaint();
-            g.drawImage(imagen, 0, 0, null);            
+     @Override
+     public void paintComponents(Graphics g) {
+     setOpaque(false);
+     Image imagen=new ImageIcon("src/Fotos/fondo.jpg").getImage();
+     repaint();
+     g.drawImage(imagen, 0, 0, null);            
             
-            super.paintComponents(g);
-        }        
-    }*/
-
+     super.paintComponents(g);
+     }        
+     }*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1267,7 +1267,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione un Tipo" }));
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione un Tipo", "Articulados", "Padrones", "Alimentadores" }));
 
         jButton33.setText("Cancelar");
 
@@ -1513,6 +1513,12 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         jLabel1.setFont(new java.awt.Font("Ubuntu Condensed", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(2, 121, 229));
         jLabel1.setText("SISTEMA DE TRANSPORTE INTEGRADO STI");
@@ -1570,9 +1576,22 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
+        DAORuta ruta = new DAORuta();
         jFrameBus.setVisible(true);
         jFrameBus.pack();
-        
+        ArrayList<Ruta> datos;
+        datos = ruta.listarRuta();
+        String[] dato = new String[datos.size() + 1];
+        for (int i = 0; i < datos.size(); i++) {
+            if (i == 0) {
+                dato[0] = "Seleccione una ruta";
+                dato[i + 1] = datos.get(i).getNombre();
+            } else {
+                dato[i + 1] = datos.get(i).getNombre();
+            }
+        }
+        DefaultComboBoxModel m1 = new DefaultComboBoxModel(dato);
+        jComboBox9.setModel(m1);
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
@@ -1580,19 +1599,59 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField16ActionPerformed
 
     private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
-       DAOBus bus = new DAOBus();
-       Bus buse = new Bus();
-       buse.setPlaca(jTextField16.getText());
-       buse.setTipo(1);
-       buse.setNombreRuta("ruta1");
-       int numFilas = bus.guardarBus(buse);
-       if (numFilas == 1){
-            
-            JOptionPane.showMessageDialog(null, "Bus guardado exitosamente");
+        DAOBus bus = new DAOBus();
+        Bus buse = new Bus();
+        boolean guardar_nombre = false;
+        boolean guardar_tipo = false;
+        boolean guardar_ruta = false;
+        
+        if (jTextField9.getText().isEmpty()) {
+            buse.setPlaca(jTextField16.getText());
+            guardar_nombre = true;
+        } else {
+              JOptionPane.showMessageDialog(null, "Placa no valida");
         }
-        else {
+        
+        if (jComboBox8.getSelectedItem() == "Articulados") {
+            buse.setTipo(1);
+            guardar_ruta = true;
+        } else {
+            if (jComboBox8.getSelectedItem() == "Padrones") {
+                buse.setTipo(2);
+                guardar_ruta = true;
+            } else {
+                if (jComboBox8.getSelectedItem() == "Alimentadores") {
+                    buse.setTipo(3);
+                    guardar_ruta = true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciones un tipo de bus");
+                }
+            }
+        }
+
+        String ruta = null;
+        if (jComboBox9.getSelectedIndex() != 0) {
+            ruta = (String) jComboBox9.getSelectedItem();
+            guardar_tipo = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una ruta");
+        }
+        buse.setNombreRuta(ruta);
+        if (guardar_tipo && guardar_nombre && guardar_ruta == true){
+        int numFilas = bus.guardarBus(buse);
+        if (numFilas == 1) {
+
+            JOptionPane.showMessageDialog(null, "Bus guardado exitosamente");
+        } else {
             JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus");
         }
+        }else{
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus,verifique los datos");
+        }
+        jFrameBus.setVisible(false);
+        jTextField16.setText("");
+        jComboBox8.setSelectedIndex(0);
+        jComboBox9.setSelectedIndex(0);
     }//GEN-LAST:event_jButton36ActionPerformed
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
@@ -1605,32 +1664,100 @@ public class Interfaz extends javax.swing.JFrame {
         Ruta ruta = new Ruta();
         ruta.setNombre(jTextField17.getText());
         ruta.setDescripcion(jTextField18.getText());
-        ruta.setFecha_inicio((String) jComboBox10.getSelectedItem() + "-" + (String) jComboBox11.getSelectedItem() + "-" +(String) jComboBox12.getSelectedItem());
-        ruta.setFecha_final((String) jComboBox13.getSelectedItem() + "-" + (String) jComboBox14.getSelectedItem() + "-" +(String) jComboBox15.getSelectedItem());
+        ruta.setFecha_inicio((String) jComboBox10.getSelectedItem() + "-" + (String) jComboBox11.getSelectedItem() + "-" + (String) jComboBox12.getSelectedItem());
+        ruta.setFecha_final((String) jComboBox13.getSelectedItem() + "-" + (String) jComboBox14.getSelectedItem() + "-" + (String) jComboBox15.getSelectedItem());
         ruta.setFranja_horaria((String) jComboBox16.getSelectedItem());
         int numFilas = rut.GuardarRuta(ruta);
-        if (numFilas == 1){
-            
+        if (numFilas == 1) {
+
             JOptionPane.showMessageDialog(null, "Bus guardado exitosamente");
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus");
         }
-                
+
     }//GEN-LAST:event_jButton37ActionPerformed
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
         jFrameEstacion.setVisible(true);
         jFrameEstacion.pack();
+        DAOEmpleado empleado = new DAOEmpleado();
+        ArrayList<Empleado> datos;
+        datos = empleado.listarEmpleados();
+        String[] dato = new String[datos.size() + 1];
+        for (int i = 0; i < datos.size(); i++) {
+            if (i == 0) {
+                dato[0] = "Seleccione un Gerente";
+                dato[i + 1] = String.valueOf(datos.get(i).getEmpleado_id());
+            } else {
+                dato[i + 1] = String.valueOf(datos.get(i).getEmpleado_id());
+            }
+        }
+        DefaultComboBoxModel m3 = new DefaultComboBoxModel(dato);
+        jComboBox17.setModel(m3);
     }//GEN-LAST:event_jButton28ActionPerformed
 
     private void jButton40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton40ActionPerformed
         DAOEstacion est = new DAOEstacion();
         Estacion esta = new Estacion();
         esta.setNombre_estacion(jTextField19.getText());
-        esta.setDirector_id((int) jComboBox17.getSelectedItem());
-        
+        String id = (String) jComboBox17.getSelectedItem();
+        esta.setDirector_id(Integer.parseInt(id ));
+        int numFilas = est.GuardarEstacion(esta);
+        if (numFilas == 1) {
+
+            JOptionPane.showMessageDialog(null, "Bus guardado exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus");
+        }
+
     }//GEN-LAST:event_jButton40ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jFrameDirectorOperativo.setVisible(true);
+        jFrameDirectorOperativo.pack();
+        DAOBus bus = new DAOBus();
+        DAORuta ruta = new DAORuta();
+        DAOEstacion estacion = new DAOEstacion();
+        ArrayList<Bus> datos;
+        datos = bus.listarBuses();
+        String[] dato = new String[datos.size() + 1];
+        for (int i = 0; i < datos.size(); i++) {
+            if (i == 0) {
+                dato[0] = "Seleccione un bus";
+                dato[i + 1] = datos.get(i).getPlaca();
+            } else {
+                dato[i + 1] = datos.get(i).getPlaca();
+            }
+        }
+        DefaultComboBoxModel m1 = new DefaultComboBoxModel(dato);
+        jComboBox4.setModel(m1);
+        ArrayList<Ruta> datos_ruta;
+        datos_ruta = ruta.listarRuta();
+        String[] dato_ruta = new String[datos_ruta.size() + 1];
+        for (int i = 0; i < datos_ruta.size(); i++) {
+            if (i == 0) {
+                dato_ruta[0] = "Seleccione una ruta";
+                dato_ruta[i + 1] = datos_ruta.get(i).getNombre();
+            } else {
+                dato_ruta[i + 1] = datos_ruta.get(i).getNombre();
+            }
+        }
+        DefaultComboBoxModel m2 = new DefaultComboBoxModel(dato_ruta);
+        jComboBox5.setModel(m2);
+        ArrayList<Estacion> datos_estacion;
+        datos_estacion = estacion.listarEstaciones();
+        String[] dato_estacion = new String[datos_estacion.size() + 1];
+        for (int i = 0; i < datos_estacion.size(); i++) {
+            if (i == 0) {
+                dato_estacion[0] = "Seleccione una Estacion";
+                dato_estacion[i + 1] = datos_estacion.get(i).getNombre_estacion();
+            } else {
+                dato_estacion[i + 1] = datos_estacion.get(i).getNombre_estacion();
+            }
+        }
+        DefaultComboBoxModel m3 = new DefaultComboBoxModel(dato_estacion);
+        jComboBox6.setModel(m3);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

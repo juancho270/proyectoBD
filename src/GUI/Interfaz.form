@@ -1802,8 +1802,11 @@
         <Component class="javax.swing.JComboBox" name="jComboBox8">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
+              <StringArray count="4">
                 <StringItem index="0" value="Seleccione un Tipo"/>
+                <StringItem index="1" value="Articulados"/>
+                <StringItem index="2" value="Padrones"/>
+                <StringItem index="3" value="Alimentadores"/>
               </StringArray>
             </Property>
           </Properties>
@@ -2347,6 +2350,9 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
