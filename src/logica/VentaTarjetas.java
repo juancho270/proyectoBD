@@ -35,4 +35,16 @@ public class VentaTarjetas {
     public int getTarjeta_id(){
       return tarjeta_id;
     }
+
+    public void setAuxiliar_id(int auxiliar_id) {
+        this.auxiliar_id = auxiliar_id;
+    }
+
+    public void setNombre_estacion(String nombre_estacion) {
+        this.nombre_estacion = nombre_estacion;
+    }
+
+    public void setTarjeta_id(int tarjeta_id) {
+        this.tarjeta_id = tarjeta_id;
+    }
 }
