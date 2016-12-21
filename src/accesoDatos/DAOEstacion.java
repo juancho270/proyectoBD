@@ -100,8 +100,9 @@ public class DAOEstacion {
         return listaEstaciones;
     }
     
-     public int cambiarNombre_Estacion(Estacion est){
-        String update_statement = "UPDATE ESTACION SET director_id = '" + est.getDirector_id()+ "' WHERE nombre_estacion = " + est.getNombre_estacion();
+     public int cambiarEstacion(Estacion est){
+        String update_statement = "UPDATE ESTACION SET director_id = '" + est.getDirector_id()+ "' WHERE nombre_estacion = '" + est.getNombre_estacion()+"';";
+        
         int numFilas = -1;
         try {
             Connection conn = fachada.getConnection();

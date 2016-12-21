@@ -243,6 +243,7 @@ public class Interfaz extends javax.swing.JFrame {
         jTextField18 = new javax.swing.JTextField();
         jButton37 = new javax.swing.JButton();
         jButton38 = new javax.swing.JButton();
+        jButton42 = new javax.swing.JButton();
         jFrameEstacion = new javax.swing.JFrame();
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
@@ -250,6 +251,7 @@ public class Interfaz extends javax.swing.JFrame {
         jComboBox17 = new javax.swing.JComboBox();
         jButton39 = new javax.swing.JButton();
         jButton40 = new javax.swing.JButton();
+        jButton43 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -616,6 +618,18 @@ public class Interfaz extends javax.swing.JFrame {
         jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton18ActionPerformed(evt);
+            }
+        });
+
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
+
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
             }
         });
 
@@ -1400,6 +1414,13 @@ public class Interfaz extends javax.swing.JFrame {
 
         jButton38.setText("Cancelar");
 
+        jButton42.setText("Modificar");
+        jButton42.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton42ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jFrameRutaLayout = new javax.swing.GroupLayout(jFrameRuta.getContentPane());
         jFrameRuta.getContentPane().setLayout(jFrameRutaLayout);
         jFrameRutaLayout.setHorizontalGroup(
@@ -1441,7 +1462,9 @@ public class Interfaz extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrameRutaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton38)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(3, 3, 3)
+                .addComponent(jButton42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton37)
                 .addContainerGap())
         );
@@ -1473,11 +1496,13 @@ public class Interfaz extends javax.swing.JFrame {
                     .addGroup(jFrameRutaLayout.createSequentialGroup()
                         .addComponent(jLabel58)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextField18, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField18, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton37)
-                    .addComponent(jButton38))
+                    .addGroup(jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton38)
+                        .addComponent(jButton42)))
                 .addContainerGap())
         );
 
@@ -1486,6 +1511,11 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel64.setText("Director:");
 
         jComboBox17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Director Estacion" }));
+        jComboBox17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox17ActionPerformed(evt);
+            }
+        });
 
         jButton39.setText("Cancelar");
 
@@ -1496,13 +1526,27 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        jButton43.setText("Modificar");
+        jButton43.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton43ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jFrameEstacionLayout = new javax.swing.GroupLayout(jFrameEstacion.getContentPane());
         jFrameEstacion.getContentPane().setLayout(jFrameEstacionLayout);
         jFrameEstacionLayout.setHorizontalGroup(
             jFrameEstacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrameEstacionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jFrameEstacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jFrameEstacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrameEstacionLayout.createSequentialGroup()
+                        .addGap(0, 17, Short.MAX_VALUE)
+                        .addComponent(jButton39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton43)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton40))
                     .addGroup(jFrameEstacionLayout.createSequentialGroup()
                         .addComponent(jLabel63)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1510,14 +1554,8 @@ public class Interfaz extends javax.swing.JFrame {
                     .addGroup(jFrameEstacionLayout.createSequentialGroup()
                         .addComponent(jLabel64)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jFrameEstacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox17, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jFrameEstacionLayout.createSequentialGroup()
-                                .addComponent(jButton39)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton40)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addComponent(jComboBox17, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jFrameEstacionLayout.setVerticalGroup(
             jFrameEstacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1532,9 +1570,10 @@ public class Interfaz extends javax.swing.JFrame {
                     .addComponent(jComboBox17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jFrameEstacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton39)
-                    .addComponent(jButton40))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addComponent(jButton40)
+                    .addComponent(jButton43)
+                    .addComponent(jButton39))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1639,14 +1678,14 @@ public class Interfaz extends javax.swing.JFrame {
         boolean guardar_nombre = false;
         boolean guardar_tipo = false;
         boolean guardar_ruta = false;
-        
+
         if (jTextField9.getText().isEmpty()) {
             buse.setPlaca(jTextField16.getText());
             guardar_nombre = true;
         } else {
-              JOptionPane.showMessageDialog(null, "Placa no valida");
+            JOptionPane.showMessageDialog(null, "Placa no valida");
         }
-        
+
         if (jComboBox8.getSelectedItem() == "Articulados") {
             buse.setTipo(1);
             guardar_ruta = true;
@@ -1672,15 +1711,15 @@ public class Interfaz extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Seleccione una ruta");
         }
         buse.setNombreRuta(ruta);
-        if (guardar_tipo && guardar_nombre && guardar_ruta == true){
-        int numFilas = bus.guardarBus(buse);
-        if (numFilas == 1) {
+        if (guardar_tipo && guardar_nombre && guardar_ruta == true) {
+            int numFilas = bus.guardarBus(buse);
+            if (numFilas == 1) {
 
-            JOptionPane.showMessageDialog(null, "Bus guardado exitosamente");
+                JOptionPane.showMessageDialog(null, "Bus guardado exitosamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus");
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus");
-        }
-        }else{
             JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus,verifique los datos");
         }
         jFrameBus.setVisible(false);
@@ -1692,6 +1731,7 @@ public class Interfaz extends javax.swing.JFrame {
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
         jFrameRuta.setVisible(true);
         jFrameRuta.pack();
+        jButton42.setEnabled(false);
     }//GEN-LAST:event_jButton27ActionPerformed
 
     private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
@@ -1735,14 +1775,16 @@ public class Interfaz extends javax.swing.JFrame {
         DAOEstacion est = new DAOEstacion();
         Estacion esta = new Estacion();
         esta.setNombre_estacion(jTextField19.getText());
+        jButton43.setEnabled(false);
         String id = (String) jComboBox17.getSelectedItem();
-        esta.setDirector_id(Integer.parseInt(id ));
+        esta.setDirector_id(Integer.parseInt(id));
         int numFilas = est.GuardarEstacion(esta);
+        System.out.println(numFilas);
         if (numFilas == 1) {
 
-            JOptionPane.showMessageDialog(null, "Bus guardado exitosamente");
+            JOptionPane.showMessageDialog(null, "estacion guardado exitosamente");
         } else {
-            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus");
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar la estacion");
         }
 
     }//GEN-LAST:event_jButton40ActionPerformed
@@ -1797,12 +1839,12 @@ public class Interfaz extends javax.swing.JFrame {
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
         DAOBus bus = new DAOBus();
         int numFila = bus.eliminarBus((String) jComboBox4.getSelectedItem());
-        if (numFila == 1){
+        if (numFila == 1) {
             JOptionPane.showMessageDialog(null, "Se elimino el bus");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "no se elimino el bus");
         }
-         ArrayList<Bus> datos;
+        ArrayList<Bus> datos;
         datos = bus.listarBuses();
         String[] dato = new String[datos.size() + 1];
         for (int i = 0; i < datos.size(); i++) {
@@ -1820,12 +1862,12 @@ public class Interfaz extends javax.swing.JFrame {
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
         DAORuta ruta = new DAORuta();
         int numFila = ruta.eliminarRuta((String) jComboBox5.getSelectedItem());
-        if (numFila == 1){
+        if (numFila == 1) {
             JOptionPane.showMessageDialog(null, "Se elimino la ruta");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "no se elimino la ruta");
         }
-         ArrayList<Ruta> datos;
+        ArrayList<Ruta> datos;
         datos = ruta.listarRuta();
         String[] dato = new String[datos.size() + 1];
         for (int i = 0; i < datos.size(); i++) {
@@ -1843,12 +1885,12 @@ public class Interfaz extends javax.swing.JFrame {
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
         DAOEstacion est = new DAOEstacion();
         int numFila = est.eliminarEstacion((String) jComboBox6.getSelectedItem());
-        if (numFila == 1){
+        if (numFila == 1) {
             JOptionPane.showMessageDialog(null, "Se elimino Estacion");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "no se elimino la Estacion");
         }
-         ArrayList<Estacion> datos;
+        ArrayList<Estacion> datos;
         datos = est.listarEstaciones();
         String[] dato = new String[datos.size() + 1];
         for (int i = 0; i < datos.size(); i++) {
@@ -1856,7 +1898,7 @@ public class Interfaz extends javax.swing.JFrame {
                 dato[0] = "Seleccione un bus";
                 dato[i + 1] = datos.get(i).getNombre_estacion();
             } else {
-                dato[i + 1] = datos.get(i). getNombre_estacion();
+                dato[i + 1] = datos.get(i).getNombre_estacion();
             }
         }
         DefaultComboBoxModel m1 = new DefaultComboBoxModel(dato);
@@ -1865,28 +1907,28 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         DAORuta ruta = new DAORuta();
-        if(jComboBox4.getSelectedItem().equals("Seleccione un bus")){
+        if (jComboBox4.getSelectedItem().equals("Seleccione un bus")) {
             JOptionPane.showMessageDialog(null, "Seleccione una placa");
-            
-        }else{
+
+        } else {
             jFrameBus.setVisible(true);
             jFrameBus.pack();
             ArrayList<Ruta> datos;
             datos = ruta.listarRuta();
             String[] dato = new String[datos.size() + 1];
             for (int i = 0; i < datos.size(); i++) {
-            if (i == 0) {
-                dato[0] = "Seleccione una ruta";
-                dato[i + 1] = datos.get(i).getNombre();
-            } else {
-                dato[i + 1] = datos.get(i).getNombre();
+                if (i == 0) {
+                    dato[0] = "Seleccione una ruta";
+                    dato[i + 1] = datos.get(i).getNombre();
+                } else {
+                    dato[i + 1] = datos.get(i).getNombre();
+                }
             }
-        }
-        DefaultComboBoxModel m1 = new DefaultComboBoxModel(dato);
-        jComboBox9.setModel(m1);
-        jTextField16.setText((String) jComboBox4.getSelectedItem());
-        jTextField16.setEnabled(false);
-        jButton36.setEnabled(false);
+            DefaultComboBoxModel m1 = new DefaultComboBoxModel(dato);
+            jComboBox9.setModel(m1);
+            jTextField16.setText((String) jComboBox4.getSelectedItem());
+            jTextField16.setEnabled(false);
+            jButton36.setEnabled(false);
         }
     }//GEN-LAST:event_jButton18ActionPerformed
 
@@ -1896,14 +1938,14 @@ public class Interfaz extends javax.swing.JFrame {
         boolean guardar_nombre = false;
         boolean guardar_tipo = false;
         boolean guardar_ruta = false;
-        
+
         if (jTextField9.getText().isEmpty()) {
             buse.setPlaca(jTextField16.getText());
             guardar_nombre = true;
         } else {
-              JOptionPane.showMessageDialog(null, "Placa no valida");
+            JOptionPane.showMessageDialog(null, "Placa no valida");
         }
-        
+
         if (jComboBox8.getSelectedItem() == "Articulados") {
             buse.setTipo(1);
             guardar_ruta = true;
@@ -1929,15 +1971,15 @@ public class Interfaz extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Seleccione una ruta");
         }
         buse.setNombreRuta(ruta);
-        if (guardar_tipo && guardar_nombre && guardar_ruta == true){
-        int numFilas = bus.cambiarBus(buse);
-        if (numFilas == 1) {
+        if (guardar_tipo && guardar_nombre && guardar_ruta == true) {
+            int numFilas = bus.cambiarBus(buse);
+            if (numFilas == 1) {
 
-            JOptionPane.showMessageDialog(null, "Bus guardado exitosamente");
+                JOptionPane.showMessageDialog(null, "Bus guardado exitosamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus");
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus");
-        }
-        }else{
             JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus,verifique los datos");
         }
         jFrameBus.setVisible(false);
@@ -1945,6 +1987,82 @@ public class Interfaz extends javax.swing.JFrame {
         jComboBox8.setSelectedIndex(0);
         jComboBox9.setSelectedIndex(0);
     }//GEN-LAST:event_jButton41ActionPerformed
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        if (jComboBox5.getSelectedItem().equals("Seleccione una ruta")) {
+            JOptionPane.showMessageDialog(null, "Seleccione una ruta para modificar");
+        } else {
+            jFrameRuta.setVisible(true);
+            jFrameRuta.pack();
+            jTextField17.setText((String) jComboBox5.getSelectedItem());
+            jTextField17.setEnabled(false);
+            jButton37.setEnabled(false);
+        }
+    }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void jButton42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton42ActionPerformed
+        DAORuta rut = new DAORuta();
+        Ruta ruta = new Ruta();
+        ruta.setNombre(jTextField17.getText());
+        ruta.setDescripcion(jTextField18.getText());
+        ruta.setFecha_inicio((String) jComboBox10.getSelectedItem() + "-" + (String) jComboBox11.getSelectedItem() + "-" + (String) jComboBox12.getSelectedItem());
+        ruta.setFecha_final((String) jComboBox13.getSelectedItem() + "-" + (String) jComboBox14.getSelectedItem() + "-" + (String) jComboBox15.getSelectedItem());
+        ruta.setFranja_horaria((String) jComboBox16.getSelectedItem());
+        int numFilas = rut.cambiarRuta(ruta);
+        if (numFilas == 1) {
+
+            JOptionPane.showMessageDialog(null, "ruta modificada exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al modificar la ruta");
+        }
+    }//GEN-LAST:event_jButton42ActionPerformed
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        if (jComboBox6.getSelectedItem().equals("Seleccione una Estacion")) {
+            JOptionPane.showMessageDialog(null, "Seleccione una Estacion para modificar");
+        } else {
+            jFrameEstacion.setVisible(true);
+            jFrameEstacion.pack();
+            jTextField19.setText((String) jComboBox6.getSelectedItem());
+            DAOEmpleado empleado = new DAOEmpleado();
+            ArrayList<Empleado> datos;
+            datos = empleado.listarEmpleados();
+            String[] dato = new String[datos.size() + 1];
+            for (int i = 0; i < datos.size(); i++) {
+                if (i == 0) {
+                    dato[0] = "Seleccione un Gerente";
+                    dato[i + 1] = String.valueOf(datos.get(i).getEmpleado_id());
+                } else {
+                    dato[i + 1] = String.valueOf(datos.get(i).getEmpleado_id());
+                }
+            }
+
+            DefaultComboBoxModel m3 = new DefaultComboBoxModel(dato);
+            jComboBox17.setModel(m3);
+        }
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jComboBox17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox17ActionPerformed
+
+    private void jButton43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton43ActionPerformed
+        DAOEstacion est = new DAOEstacion();
+        Estacion esta = new Estacion();
+        esta.setNombre_estacion(jTextField19.getText());
+        jButton40.setEnabled(false);
+        jTextField19.setEnabled(false);
+        jTextField19.setText((String) jComboBox6.getSelectedItem());
+        String id = (String) jComboBox17.getSelectedItem();
+        esta.setDirector_id(Integer.parseInt(id));
+        int numFilas = est.GuardarEstacion(esta);
+        if (numFilas == -2) {
+            JOptionPane.showMessageDialog(null, "Estacion guardado exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al modificar la estacion");
+        }
+        est.cambiarEstacion(esta);
+    }//GEN-LAST:event_jButton43ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1989,6 +2107,8 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton40;
     private javax.swing.JButton jButton41;
+    private javax.swing.JButton jButton42;
+    private javax.swing.JButton jButton43;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;

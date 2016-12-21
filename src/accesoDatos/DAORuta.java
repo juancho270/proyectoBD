@@ -102,8 +102,9 @@ public class DAORuta {
         
         return listaRuta;
     }
-     public int cambiarDescripcion(Ruta rut){
-        String update_statement = "UPDATE RUTA SET descripcion = '" + rut.getDescripcion()+ "' WHERE nombre = " + rut.getNombre();
+     public int cambiarRuta(Ruta rut){
+        String update_statement = "UPDATE RUTA SET descripcion = '" + rut.getDescripcion()+ "', fecha_inicio = '"+ rut.getFecha_inicio() + "',fecha_final = '" + rut.getFecha_final() + "',franja_horaria = '"+ rut.getFranja_horaria()+"' WHERE nombre = '" + rut.getNombre()+"';";
+         System.out.println(update_statement);
         int numFilas = -1;
         try {
             Connection conn = fachada.getConnection();
