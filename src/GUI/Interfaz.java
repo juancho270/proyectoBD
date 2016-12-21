@@ -612,6 +612,24 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel34.setText("Turno");
 
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
+
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
+
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
+
         jButton27.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton27ActionPerformed(evt);
@@ -1758,6 +1776,75 @@ public class Interfaz extends javax.swing.JFrame {
         DefaultComboBoxModel m3 = new DefaultComboBoxModel(dato_estacion);
         jComboBox6.setModel(m3);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        DAOBus bus = new DAOBus();
+        int numFila = bus.eliminarBus((String) jComboBox4.getSelectedItem());
+        if (numFila == 1){
+            JOptionPane.showMessageDialog(null, "Se elimino el bus");
+        }else{
+            JOptionPane.showMessageDialog(null, "no se elimino el bus");
+        }
+         ArrayList<Bus> datos;
+        datos = bus.listarBuses();
+        String[] dato = new String[datos.size() + 1];
+        for (int i = 0; i < datos.size(); i++) {
+            if (i == 0) {
+                dato[0] = "Seleccione un bus";
+                dato[i + 1] = datos.get(i).getPlaca();
+            } else {
+                dato[i + 1] = datos.get(i).getPlaca();
+            }
+        }
+        DefaultComboBoxModel m1 = new DefaultComboBoxModel(dato);
+        jComboBox4.setModel(m1);
+    }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        DAORuta ruta = new DAORuta();
+        int numFila = ruta.eliminarRuta((String) jComboBox5.getSelectedItem());
+        if (numFila == 1){
+            JOptionPane.showMessageDialog(null, "Se elimino la ruta");
+        }else{
+            JOptionPane.showMessageDialog(null, "no se elimino la ruta");
+        }
+         ArrayList<Ruta> datos;
+        datos = ruta.listarRuta();
+        String[] dato = new String[datos.size() + 1];
+        for (int i = 0; i < datos.size(); i++) {
+            if (i == 0) {
+                dato[0] = "Seleccione un bus";
+                dato[i + 1] = datos.get(i).getNombre();
+            } else {
+                dato[i + 1] = datos.get(i).getNombre();
+            }
+        }
+        DefaultComboBoxModel m1 = new DefaultComboBoxModel(dato);
+        jComboBox5.setModel(m1);
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        DAOEstacion est = new DAOEstacion();
+        int numFila = est.eliminarEstacion((String) jComboBox6.getSelectedItem());
+        if (numFila == 1){
+            JOptionPane.showMessageDialog(null, "Se elimino Estacion");
+        }else{
+            JOptionPane.showMessageDialog(null, "no se elimino la Estacion");
+        }
+         ArrayList<Estacion> datos;
+        datos = est.listarEstaciones();
+        String[] dato = new String[datos.size() + 1];
+        for (int i = 0; i < datos.size(); i++) {
+            if (i == 0) {
+                dato[0] = "Seleccione un bus";
+                dato[i + 1] = datos.get(i).getNombre_estacion();
+            } else {
+                dato[i + 1] = datos.get(i). getNombre_estacion();
+            }
+        }
+        DefaultComboBoxModel m1 = new DefaultComboBoxModel(dato);
+        jComboBox6.setModel(m1);
+    }//GEN-LAST:event_jButton25ActionPerformed
 
     /**
      * @param args the command line arguments

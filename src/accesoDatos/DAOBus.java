@@ -117,4 +117,27 @@ public class DAOBus {
             return -3;
         }
     }
+    
+    public int eliminarBus(String placa){
+        String sql_guardar;
+        int numFilas = 0;
+        sql_guardar = "DELETE FROM BUS WHERE placa = '" + placa + "';";
+                
+        try{
+            Connection conn= fachada.getConnection();
+            Statement sentencia = conn.createStatement();
+
+            numFilas = sentencia.executeUpdate(sql_guardar);            
+            System.out.println("up " + numFilas);
+            return numFilas;
+            
+        }
+        catch(SQLException e){
+            System.out.println(e); 
+            }
+        catch(Exception e){ 
+            System.out.println(e);
+        }
+        return -1;
+    }//fin guardar
 }

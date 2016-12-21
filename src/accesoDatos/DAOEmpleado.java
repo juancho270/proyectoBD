@@ -201,4 +201,27 @@ public class DAOEmpleado {
         fachada.closeConnection(fachada.getConnection());
     }
     
+    public int eliminarEmpleado(String id){
+        String sql_guardar;
+        int numFilas = 0;
+        sql_guardar = "DELETE FROM EMPLEADO WHERE empleado_id = '" + id + "';";
+                
+        try{
+            Connection conn= fachada.getConnection();
+            Statement sentencia = conn.createStatement();
+
+            numFilas = sentencia.executeUpdate(sql_guardar);            
+            System.out.println("up " + numFilas);
+            return numFilas;
+            
+        }
+        catch(SQLException e){
+            System.out.println(e); 
+            }
+        catch(Exception e){ 
+            System.out.println(e);
+        }
+        return -1;
+    }//fin guardar
+    
 }
