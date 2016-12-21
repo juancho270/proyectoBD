@@ -12,12 +12,28 @@ package logica;
 public class ManejoBuses {
     int conductor_id;
     String placa_bus;
+
+    public void setConductor_id(int conductor_id) {
+        this.conductor_id = conductor_id;
+    }
+
+    public void setPlaca_bus(String placa_bus) {
+        this.placa_bus = placa_bus;
+    }
+
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
     String turno;
 
     public ManejoBuses(int conductor_id, String placa_bus, String turno){
       this.conductor_id = conductor_id;
       this.placa_bus = placa_bus;
       this.turno = turno;
+    }
+
+    public ManejoBuses() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getConductor_id(){

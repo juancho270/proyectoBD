@@ -14,10 +14,14 @@ public class TPersonalizada {
     int saldo;
     int avances_disponibles;
 
-    public void TPersonalizada(int tarjeta_id, int saldo, int avances_disponibles){
+    public TPersonalizada(int tarjeta_id, int saldo, int avances_disponibles){
       this.tarjeta_id = tarjeta_id;
       this.saldo = saldo;
       this.avances_disponibles = avances_disponibles;
+    }
+
+    public TPersonalizada() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getTarjeta_id(){

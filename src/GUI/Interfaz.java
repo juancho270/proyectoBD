@@ -1,12 +1,25 @@
 package GUI;
 
-
 import GUI.Implementacion;
+import accesoDatos.DAOBus;
+import accesoDatos.DAOCliente;
+import accesoDatos.DAOEmpleado;
+import accesoDatos.DAOEstacion;
+import accesoDatos.DAORuta;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import logica.Bus;
+import logica.Cliente;
+import logica.Empleado;
+import logica.Estacion;
+import logica.Ruta;
 
 //Importaciones
 //Inicio Clase Servidor
@@ -16,55 +29,50 @@ public class Interfaz extends javax.swing.JFrame {
 
     //Constructor 
     public Interfaz(Implementacion obj) {
-        super();        
-        
+        super();
+
         initComponents();
         /* //inicialicion del panel que serviria para poner fondo a un panel pero no funciona :(
-        ImagenPanel panel=new ImagenPanel();
-        add(panel); */
-        
-        implementacion = obj;         
+         ImagenPanel panel=new ImagenPanel();
+         add(panel); */
+
+        implementacion = obj;
         jButton1.setIcon(new ImageIcon("src/Fotos/Botones Principales/pasajeros.png"));
         jButton2.setIcon(new ImageIcon("src/Fotos/Botones Principales/conductor.png"));
         jButton3.setIcon(new ImageIcon("src/Fotos/Botones Principales/empleados.png"));
-        
+
         this.setVisible(true);
         pack();
-        
-        
-        
+
         jButton22.setIcon(new ImageIcon("src/Fotos/Botones/+.jpg"));
         jButton27.setIcon(new ImageIcon("src/Fotos/Botones/+.jpg"));
-        jButton28.setIcon(new ImageIcon("src/Fotos/Botones/+.jpg"));        
+        jButton28.setIcon(new ImageIcon("src/Fotos/Botones/+.jpg"));
         jButton29.setIcon(new ImageIcon("src/Fotos/Botones/+.jpg"));
         jButton18.setIcon(new ImageIcon("src/Fotos/Botones/conf.jpg"));
         jButton19.setIcon(new ImageIcon("src/Fotos/Botones/conf.jpg"));
         jButton20.setIcon(new ImageIcon("src/Fotos/Botones/conf.jpg"));
-        jButton21.setIcon(new ImageIcon("src/Fotos/Botones/conf.jpg"));        
+        jButton21.setIcon(new ImageIcon("src/Fotos/Botones/conf.jpg"));
         jButton23.setIcon(new ImageIcon("src/Fotos/Botones/borrar.jpg"));
         jButton24.setIcon(new ImageIcon("src/Fotos/Botones/borrar.jpg"));
         jButton25.setIcon(new ImageIcon("src/Fotos/Botones/borrar.jpg"));
-        jButton26.setIcon(new ImageIcon("src/Fotos/Botones/borrar.jpg"));        
+        jButton26.setIcon(new ImageIcon("src/Fotos/Botones/borrar.jpg"));
         jButton30.setIcon(new ImageIcon("src/Fotos/Botones/ver.jpg"));
-        
-        
-        
+
     }
-    
+
     /* // una clase que cree para ponerle fondo a un panel pero no funciona :(
-    public class ImagenPanel extends JPanel{    
+     public class ImagenPanel extends JPanel{    
 
-        @Override
-        public void paintComponents(Graphics g) {
-            setOpaque(false);
-            Image imagen=new ImageIcon("src/Fotos/fondo.jpg").getImage();
-            repaint();
-            g.drawImage(imagen, 0, 0, null);            
+     @Override
+     public void paintComponents(Graphics g) {
+     setOpaque(false);
+     Image imagen=new ImageIcon("src/Fotos/fondo.jpg").getImage();
+     repaint();
+     g.drawImage(imagen, 0, 0, null);            
             
-            super.paintComponents(g);
-        }        
-    }*/
-
+     super.paintComponents(g);
+     }        
+     }*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,10 +116,9 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel46 = new javax.swing.JLabel();
         jButton32 = new javax.swing.JButton();
         jLabel47 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
+        jComboBox7 = new javax.swing.JComboBox<String>();
         jTextField12 = new javax.swing.JTextField();
         jLabel48 = new javax.swing.JLabel();
-        jPanelRutas = new javax.swing.JPanel();
         jFrameConductor = new javax.swing.JFrame();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -121,10 +128,10 @@ public class Interfaz extends javax.swing.JFrame {
         jFrameDirectorOperativo = new javax.swing.JFrame();
         jPanel3 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        jComboBox4 = new javax.swing.JComboBox<String>();
+        jComboBox5 = new javax.swing.JComboBox<String>();
         jLabel17 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
+        jComboBox6 = new javax.swing.JComboBox<String>();
         jLabel24 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
@@ -145,18 +152,15 @@ public class Interfaz extends javax.swing.JFrame {
         jButton29 = new javax.swing.JButton();
         jLabel35 = new javax.swing.JLabel();
         jButton30 = new javax.swing.JButton();
-        jPanelBus = new javax.swing.JPanel();
-        jPanelRuta = new javax.swing.JPanel();
-        jPanelEstacion = new javax.swing.JPanel();
         jPanelTurno = new javax.swing.JPanel();
         DirectorEstacion = new javax.swing.JFrame();
         jPanel9 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<String>();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<String>();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
@@ -174,7 +178,7 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jButton5 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jPanelTarjetasInteligentes = new javax.swing.JPanel();
@@ -212,6 +216,42 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jButton12 = new javax.swing.JButton();
+        jFrameBus = new javax.swing.JFrame();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jTextField16 = new javax.swing.JTextField();
+        jComboBox8 = new javax.swing.JComboBox();
+        jButton33 = new javax.swing.JButton();
+        jButton36 = new javax.swing.JButton();
+        jComboBox9 = new javax.swing.JComboBox();
+        jLabel53 = new javax.swing.JLabel();
+        jButton41 = new javax.swing.JButton();
+        jFrameRuta = new javax.swing.JFrame();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        jTextField17 = new javax.swing.JTextField();
+        jComboBox10 = new javax.swing.JComboBox();
+        jComboBox11 = new javax.swing.JComboBox();
+        jComboBox12 = new javax.swing.JComboBox();
+        jComboBox13 = new javax.swing.JComboBox();
+        jComboBox14 = new javax.swing.JComboBox();
+        jComboBox15 = new javax.swing.JComboBox();
+        jComboBox16 = new javax.swing.JComboBox();
+        jTextField18 = new javax.swing.JTextField();
+        jButton37 = new javax.swing.JButton();
+        jButton38 = new javax.swing.JButton();
+        jButton42 = new javax.swing.JButton();
+        jFrameEstacion = new javax.swing.JFrame();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        jTextField19 = new javax.swing.JTextField();
+        jComboBox17 = new javax.swing.JComboBox();
+        jButton39 = new javax.swing.JButton();
+        jButton40 = new javax.swing.JButton();
+        jButton43 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -380,7 +420,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel47.setText("Quejas");
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel48.setText("Estacion Destino");
 
@@ -479,19 +519,6 @@ public class Interfaz extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        jPanelRutas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        javax.swing.GroupLayout jPanelRutasLayout = new javax.swing.GroupLayout(jPanelRutas);
-        jPanelRutas.setLayout(jPanelRutasLayout);
-        jPanelRutasLayout.setHorizontalGroup(
-            jPanelRutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
-        );
-        jPanelRutasLayout.setVerticalGroup(
-            jPanelRutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 355, Short.MAX_VALUE)
-        );
-
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel2.setText("Cedula ");
@@ -559,13 +586,13 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel16.setText("Buses");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel17.setText("Rutas");
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel24.setText("Estaciones");
 
@@ -587,6 +614,60 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel33.setText("Id Usuario");
 
         jLabel34.setText("Turno");
+
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
+
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
+
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
+
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
+
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
+
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
+
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton27ActionPerformed(evt);
+            }
+        });
+
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
+
+        jButton29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton29ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -724,45 +805,6 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanelBus.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        javax.swing.GroupLayout jPanelBusLayout = new javax.swing.GroupLayout(jPanelBus);
-        jPanelBus.setLayout(jPanelBusLayout);
-        jPanelBusLayout.setHorizontalGroup(
-            jPanelBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 531, Short.MAX_VALUE)
-        );
-        jPanelBusLayout.setVerticalGroup(
-            jPanelBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
-        );
-
-        jPanelRuta.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        javax.swing.GroupLayout jPanelRutaLayout = new javax.swing.GroupLayout(jPanelRuta);
-        jPanelRuta.setLayout(jPanelRutaLayout);
-        jPanelRutaLayout.setHorizontalGroup(
-            jPanelRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 531, Short.MAX_VALUE)
-        );
-        jPanelRutaLayout.setVerticalGroup(
-            jPanelRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
-        );
-
-        jPanelEstacion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        javax.swing.GroupLayout jPanelEstacionLayout = new javax.swing.GroupLayout(jPanelEstacion);
-        jPanelEstacion.setLayout(jPanelEstacionLayout);
-        jPanelEstacionLayout.setHorizontalGroup(
-            jPanelEstacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 531, Short.MAX_VALUE)
-        );
-        jPanelEstacionLayout.setVerticalGroup(
-            jPanelEstacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
-        );
-
         jPanelTurno.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanelTurnoLayout = new javax.swing.GroupLayout(jPanelTurno);
@@ -789,7 +831,7 @@ public class Interfaz extends javax.swing.JFrame {
             .addGap(0, 387, Short.MAX_VALUE)
         );
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel14.setText("Quejas Pendientes");
 
@@ -803,7 +845,7 @@ public class Interfaz extends javax.swing.JFrame {
         jButton11.setEnabled(false);
         jButton11.setFocusPainted(false);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton13.setText("Agregar");
 
@@ -939,7 +981,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel4.setText("Tarjetas Genericas");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton5.setText("Vender");
 
@@ -1254,6 +1296,286 @@ public class Interfaz extends javax.swing.JFrame {
                 .addContainerGap(193, Short.MAX_VALUE))
         );
 
+        jLabel51.setText("Placa: ");
+
+        jLabel52.setText("Tipo:   ");
+
+        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField16ActionPerformed(evt);
+            }
+        });
+
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione un Tipo", "Articulados", "Padrones", "Alimentadores" }));
+
+        jButton33.setText("Cancelar");
+
+        jButton36.setText("Guardar");
+        jButton36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton36ActionPerformed(evt);
+            }
+        });
+
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una Ruta" }));
+
+        jLabel53.setText("Ruta: ");
+
+        jButton41.setText("Modificar");
+        jButton41.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton41ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jFrameBusLayout = new javax.swing.GroupLayout(jFrameBus.getContentPane());
+        jFrameBus.getContentPane().setLayout(jFrameBusLayout);
+        jFrameBusLayout.setHorizontalGroup(
+            jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameBusLayout.createSequentialGroup()
+                .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jFrameBusLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jFrameBusLayout.createSequentialGroup()
+                                .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel52)
+                                    .addComponent(jLabel53))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox8, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox9, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jFrameBusLayout.createSequentialGroup()
+                                .addComponent(jLabel51)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField16))))
+                    .addGroup(jFrameBusLayout.createSequentialGroup()
+                        .addGap(0, 18, Short.MAX_VALUE)
+                        .addComponent(jButton33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton41)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton36)))
+                .addContainerGap())
+        );
+        jFrameBusLayout.setVerticalGroup(
+            jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameBusLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel51))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel52)
+                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel53))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jFrameBusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton33)
+                    .addComponent(jButton41)
+                    .addComponent(jButton36))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        jLabel54.setText("Nombre:");
+
+        jLabel58.setText("Descripcion:");
+
+        jLabel60.setText("Fecha Inicio:");
+
+        jLabel61.setText("Fecha Final:");
+
+        jLabel62.setText("Franja Horaria:");
+
+        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dia", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mes", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+
+        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Año", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
+
+        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dia", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+        jComboBox14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mes", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+
+        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Año", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
+
+        jComboBox16.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione Franja", "Diurna", "Nocturna" }));
+
+        jButton37.setText("Guardar");
+        jButton37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton37ActionPerformed(evt);
+            }
+        });
+
+        jButton38.setText("Cancelar");
+
+        jButton42.setText("Modificar");
+        jButton42.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton42ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jFrameRutaLayout = new javax.swing.GroupLayout(jFrameRuta.getContentPane());
+        jFrameRuta.getContentPane().setLayout(jFrameRutaLayout);
+        jFrameRutaLayout.setHorizontalGroup(
+            jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameRutaLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jFrameRutaLayout.createSequentialGroup()
+                        .addGroup(jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel54)
+                            .addComponent(jLabel60)
+                            .addComponent(jLabel61))
+                        .addGap(25, 25, 25)
+                        .addGroup(jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jFrameRutaLayout.createSequentialGroup()
+                                .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jFrameRutaLayout.createSequentialGroup()
+                                .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField17)))
+                    .addGroup(jFrameRutaLayout.createSequentialGroup()
+                        .addGroup(jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel62)
+                            .addComponent(jLabel58))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jFrameRutaLayout.createSequentialGroup()
+                                .addComponent(jComboBox16, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(120, 120, 120)))))
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrameRutaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton38)
+                .addGap(3, 3, 3)
+                .addComponent(jButton42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton37)
+                .addContainerGap())
+        );
+        jFrameRutaLayout.setVerticalGroup(
+            jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameRutaLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel54)
+                    .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel60)
+                    .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel61)
+                    .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel62)
+                    .addComponent(jComboBox16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jFrameRutaLayout.createSequentialGroup()
+                        .addComponent(jLabel58)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jTextField18, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton37)
+                    .addGroup(jFrameRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton38)
+                        .addComponent(jButton42)))
+                .addContainerGap())
+        );
+
+        jLabel63.setText("Nombre:");
+
+        jLabel64.setText("Director:");
+
+        jComboBox17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Director Estacion" }));
+        jComboBox17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox17ActionPerformed(evt);
+            }
+        });
+
+        jButton39.setText("Cancelar");
+
+        jButton40.setText("Guardar");
+        jButton40.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton40ActionPerformed(evt);
+            }
+        });
+
+        jButton43.setText("Modificar");
+        jButton43.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton43ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jFrameEstacionLayout = new javax.swing.GroupLayout(jFrameEstacion.getContentPane());
+        jFrameEstacion.getContentPane().setLayout(jFrameEstacionLayout);
+        jFrameEstacionLayout.setHorizontalGroup(
+            jFrameEstacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameEstacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jFrameEstacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrameEstacionLayout.createSequentialGroup()
+                        .addGap(0, 17, Short.MAX_VALUE)
+                        .addComponent(jButton39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton43)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton40))
+                    .addGroup(jFrameEstacionLayout.createSequentialGroup()
+                        .addComponent(jLabel63)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField19))
+                    .addGroup(jFrameEstacionLayout.createSequentialGroup()
+                        .addComponent(jLabel64)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox17, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jFrameEstacionLayout.setVerticalGroup(
+            jFrameEstacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameEstacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jFrameEstacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel63)
+                    .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jFrameEstacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel64)
+                    .addComponent(jComboBox17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jFrameEstacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton40)
+                    .addComponent(jButton43)
+                    .addComponent(jButton39))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusable(false);
         setResizable(false);
@@ -1261,6 +1583,12 @@ public class Interfaz extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -1320,6 +1648,423 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
+        jButton41.setEnabled(false);
+        DAORuta ruta = new DAORuta();
+        jFrameBus.setVisible(true);
+        jFrameBus.pack();
+        ArrayList<Ruta> datos;
+        datos = ruta.listarRuta();
+        String[] dato = new String[datos.size() + 1];
+        for (int i = 0; i < datos.size(); i++) {
+            if (i == 0) {
+                dato[0] = "Seleccione una ruta";
+                dato[i + 1] = datos.get(i).getNombre();
+            } else {
+                dato[i + 1] = datos.get(i).getNombre();
+            }
+        }
+        DefaultComboBoxModel m1 = new DefaultComboBoxModel(dato);
+        jComboBox9.setModel(m1);
+    }//GEN-LAST:event_jButton29ActionPerformed
+
+    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField16ActionPerformed
+
+    private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
+        DAOBus bus = new DAOBus();
+        Bus buse = new Bus();
+        boolean guardar_nombre = false;
+        boolean guardar_tipo = false;
+        boolean guardar_ruta = false;
+
+        if (jTextField9.getText().isEmpty()) {
+            buse.setPlaca(jTextField16.getText());
+            guardar_nombre = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Placa no valida");
+        }
+
+        if (jComboBox8.getSelectedItem() == "Articulados") {
+            buse.setTipo(1);
+            guardar_ruta = true;
+        } else {
+            if (jComboBox8.getSelectedItem() == "Padrones") {
+                buse.setTipo(2);
+                guardar_ruta = true;
+            } else {
+                if (jComboBox8.getSelectedItem() == "Alimentadores") {
+                    buse.setTipo(3);
+                    guardar_ruta = true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciones un tipo de bus");
+                }
+            }
+        }
+
+        String ruta = null;
+        if (jComboBox9.getSelectedIndex() != 0) {
+            ruta = (String) jComboBox9.getSelectedItem();
+            guardar_tipo = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una ruta");
+        }
+        buse.setNombreRuta(ruta);
+        if (guardar_tipo && guardar_nombre && guardar_ruta == true) {
+            int numFilas = bus.guardarBus(buse);
+            if (numFilas == 1) {
+
+                JOptionPane.showMessageDialog(null, "Bus guardado exitosamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus,verifique los datos");
+        }
+        jFrameBus.setVisible(false);
+        jTextField16.setText("");
+        jComboBox8.setSelectedIndex(0);
+        jComboBox9.setSelectedIndex(0);
+    }//GEN-LAST:event_jButton36ActionPerformed
+
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+        jFrameRuta.setVisible(true);
+        jFrameRuta.pack();
+        jButton42.setEnabled(false);
+    }//GEN-LAST:event_jButton27ActionPerformed
+
+    private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
+        DAORuta rut = new DAORuta();
+        Ruta ruta = new Ruta();
+        ruta.setNombre(jTextField17.getText());
+        ruta.setDescripcion(jTextField18.getText());
+        ruta.setFecha_inicio((String) jComboBox10.getSelectedItem() + "-" + (String) jComboBox11.getSelectedItem() + "-" + (String) jComboBox12.getSelectedItem());
+        ruta.setFecha_final((String) jComboBox13.getSelectedItem() + "-" + (String) jComboBox14.getSelectedItem() + "-" + (String) jComboBox15.getSelectedItem());
+        ruta.setFranja_horaria((String) jComboBox16.getSelectedItem());
+        int numFilas = rut.GuardarRuta(ruta);
+        if (numFilas == 1) {
+
+            JOptionPane.showMessageDialog(null, "Bus guardado exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus");
+        }
+
+    }//GEN-LAST:event_jButton37ActionPerformed
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+        jFrameEstacion.setVisible(true);
+        jFrameEstacion.pack();
+        DAOEmpleado empleado = new DAOEmpleado();
+        ArrayList<Empleado> datos;
+        datos = empleado.listarEmpleados();
+        String[] dato = new String[datos.size() + 1];
+        for (int i = 0; i < datos.size(); i++) {
+            if (i == 0) {
+                dato[0] = "Seleccione un Gerente";
+                dato[i + 1] = String.valueOf(datos.get(i).getEmpleado_id());
+            } else {
+                dato[i + 1] = String.valueOf(datos.get(i).getEmpleado_id());
+            }
+        }
+        DefaultComboBoxModel m3 = new DefaultComboBoxModel(dato);
+        jComboBox17.setModel(m3);
+    }//GEN-LAST:event_jButton28ActionPerformed
+
+    private void jButton40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton40ActionPerformed
+        DAOEstacion est = new DAOEstacion();
+        Estacion esta = new Estacion();
+        esta.setNombre_estacion(jTextField19.getText());
+        jButton43.setEnabled(false);
+        String id = (String) jComboBox17.getSelectedItem();
+        esta.setDirector_id(Integer.parseInt(id));
+        int numFilas = est.GuardarEstacion(esta);
+        System.out.println(numFilas);
+        if (numFilas == 1) {
+
+            JOptionPane.showMessageDialog(null, "estacion guardado exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar la estacion");
+        }
+
+    }//GEN-LAST:event_jButton40ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jFrameDirectorOperativo.setVisible(true);
+        jFrameDirectorOperativo.pack();
+        DAOBus bus = new DAOBus();
+        DAORuta ruta = new DAORuta();
+        DAOEstacion estacion = new DAOEstacion();
+        ArrayList<Bus> datos;
+        datos = bus.listarBuses();
+        String[] dato = new String[datos.size() + 1];
+        for (int i = 0; i < datos.size(); i++) {
+            if (i == 0) {
+                dato[0] = "Seleccione un bus";
+                dato[i + 1] = datos.get(i).getPlaca();
+            } else {
+                dato[i + 1] = datos.get(i).getPlaca();
+            }
+        }
+        DefaultComboBoxModel m1 = new DefaultComboBoxModel(dato);
+        jComboBox4.setModel(m1);
+        ArrayList<Ruta> datos_ruta;
+        datos_ruta = ruta.listarRuta();
+        String[] dato_ruta = new String[datos_ruta.size() + 1];
+        for (int i = 0; i < datos_ruta.size(); i++) {
+            if (i == 0) {
+                dato_ruta[0] = "Seleccione una ruta";
+                dato_ruta[i + 1] = datos_ruta.get(i).getNombre();
+            } else {
+                dato_ruta[i + 1] = datos_ruta.get(i).getNombre();
+            }
+        }
+        DefaultComboBoxModel m2 = new DefaultComboBoxModel(dato_ruta);
+        jComboBox5.setModel(m2);
+        ArrayList<Estacion> datos_estacion;
+        datos_estacion = estacion.listarEstaciones();
+        String[] dato_estacion = new String[datos_estacion.size() + 1];
+        for (int i = 0; i < datos_estacion.size(); i++) {
+            if (i == 0) {
+                dato_estacion[0] = "Seleccione una Estacion";
+                dato_estacion[i + 1] = datos_estacion.get(i).getNombre_estacion();
+            } else {
+                dato_estacion[i + 1] = datos_estacion.get(i).getNombre_estacion();
+            }
+        }
+        DefaultComboBoxModel m3 = new DefaultComboBoxModel(dato_estacion);
+        jComboBox6.setModel(m3);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        DAOBus bus = new DAOBus();
+        int numFila = bus.eliminarBus((String) jComboBox4.getSelectedItem());
+        if (numFila == 1) {
+            JOptionPane.showMessageDialog(null, "Se elimino el bus");
+        } else {
+            JOptionPane.showMessageDialog(null, "no se elimino el bus");
+        }
+        ArrayList<Bus> datos;
+        datos = bus.listarBuses();
+        String[] dato = new String[datos.size() + 1];
+        for (int i = 0; i < datos.size(); i++) {
+            if (i == 0) {
+                dato[0] = "Seleccione un bus";
+                dato[i + 1] = datos.get(i).getPlaca();
+            } else {
+                dato[i + 1] = datos.get(i).getPlaca();
+            }
+        }
+        DefaultComboBoxModel m1 = new DefaultComboBoxModel(dato);
+        jComboBox4.setModel(m1);
+    }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        DAORuta ruta = new DAORuta();
+        int numFila = ruta.eliminarRuta((String) jComboBox5.getSelectedItem());
+        if (numFila == 1) {
+            JOptionPane.showMessageDialog(null, "Se elimino la ruta");
+        } else {
+            JOptionPane.showMessageDialog(null, "no se elimino la ruta");
+        }
+        ArrayList<Ruta> datos;
+        datos = ruta.listarRuta();
+        String[] dato = new String[datos.size() + 1];
+        for (int i = 0; i < datos.size(); i++) {
+            if (i == 0) {
+                dato[0] = "Seleccione un bus";
+                dato[i + 1] = datos.get(i).getNombre();
+            } else {
+                dato[i + 1] = datos.get(i).getNombre();
+            }
+        }
+        DefaultComboBoxModel m1 = new DefaultComboBoxModel(dato);
+        jComboBox5.setModel(m1);
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        DAOEstacion est = new DAOEstacion();
+        int numFila = est.eliminarEstacion((String) jComboBox6.getSelectedItem());
+        if (numFila == 1) {
+            JOptionPane.showMessageDialog(null, "Se elimino Estacion");
+        } else {
+            JOptionPane.showMessageDialog(null, "no se elimino la Estacion");
+        }
+        ArrayList<Estacion> datos;
+        datos = est.listarEstaciones();
+        String[] dato = new String[datos.size() + 1];
+        for (int i = 0; i < datos.size(); i++) {
+            if (i == 0) {
+                dato[0] = "Seleccione un bus";
+                dato[i + 1] = datos.get(i).getNombre_estacion();
+            } else {
+                dato[i + 1] = datos.get(i).getNombre_estacion();
+            }
+        }
+        DefaultComboBoxModel m1 = new DefaultComboBoxModel(dato);
+        jComboBox6.setModel(m1);
+    }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        DAORuta ruta = new DAORuta();
+        if (jComboBox4.getSelectedItem().equals("Seleccione un bus")) {
+            JOptionPane.showMessageDialog(null, "Seleccione una placa");
+
+        } else {
+            jFrameBus.setVisible(true);
+            jFrameBus.pack();
+            ArrayList<Ruta> datos;
+            datos = ruta.listarRuta();
+            String[] dato = new String[datos.size() + 1];
+            for (int i = 0; i < datos.size(); i++) {
+                if (i == 0) {
+                    dato[0] = "Seleccione una ruta";
+                    dato[i + 1] = datos.get(i).getNombre();
+                } else {
+                    dato[i + 1] = datos.get(i).getNombre();
+                }
+            }
+            DefaultComboBoxModel m1 = new DefaultComboBoxModel(dato);
+            jComboBox9.setModel(m1);
+            jTextField16.setText((String) jComboBox4.getSelectedItem());
+            jTextField16.setEnabled(false);
+            jButton36.setEnabled(false);
+        }
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton41ActionPerformed
+        DAOBus bus = new DAOBus();
+        Bus buse = new Bus();
+        boolean guardar_nombre = false;
+        boolean guardar_tipo = false;
+        boolean guardar_ruta = false;
+
+        if (jTextField9.getText().isEmpty()) {
+            buse.setPlaca(jTextField16.getText());
+            guardar_nombre = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Placa no valida");
+        }
+
+        if (jComboBox8.getSelectedItem() == "Articulados") {
+            buse.setTipo(1);
+            guardar_ruta = true;
+        } else {
+            if (jComboBox8.getSelectedItem() == "Padrones") {
+                buse.setTipo(2);
+                guardar_ruta = true;
+            } else {
+                if (jComboBox8.getSelectedItem() == "Alimentadores") {
+                    buse.setTipo(3);
+                    guardar_ruta = true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciones un tipo de bus");
+                }
+            }
+        }
+
+        String ruta = null;
+        if (jComboBox9.getSelectedIndex() != 0) {
+            ruta = (String) jComboBox9.getSelectedItem();
+            guardar_tipo = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una ruta");
+        }
+        buse.setNombreRuta(ruta);
+        if (guardar_tipo && guardar_nombre && guardar_ruta == true) {
+            int numFilas = bus.cambiarBus(buse);
+            if (numFilas == 1) {
+
+                JOptionPane.showMessageDialog(null, "Bus guardado exitosamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Bus,verifique los datos");
+        }
+        jFrameBus.setVisible(false);
+        jTextField16.setText("");
+        jComboBox8.setSelectedIndex(0);
+        jComboBox9.setSelectedIndex(0);
+    }//GEN-LAST:event_jButton41ActionPerformed
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        if (jComboBox5.getSelectedItem().equals("Seleccione una ruta")) {
+            JOptionPane.showMessageDialog(null, "Seleccione una ruta para modificar");
+        } else {
+            jFrameRuta.setVisible(true);
+            jFrameRuta.pack();
+            jTextField17.setText((String) jComboBox5.getSelectedItem());
+            jTextField17.setEnabled(false);
+            jButton37.setEnabled(false);
+        }
+    }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void jButton42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton42ActionPerformed
+        DAORuta rut = new DAORuta();
+        Ruta ruta = new Ruta();
+        ruta.setNombre(jTextField17.getText());
+        ruta.setDescripcion(jTextField18.getText());
+        ruta.setFecha_inicio((String) jComboBox10.getSelectedItem() + "-" + (String) jComboBox11.getSelectedItem() + "-" + (String) jComboBox12.getSelectedItem());
+        ruta.setFecha_final((String) jComboBox13.getSelectedItem() + "-" + (String) jComboBox14.getSelectedItem() + "-" + (String) jComboBox15.getSelectedItem());
+        ruta.setFranja_horaria((String) jComboBox16.getSelectedItem());
+        int numFilas = rut.cambiarRuta(ruta);
+        if (numFilas == 1) {
+
+            JOptionPane.showMessageDialog(null, "ruta modificada exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al modificar la ruta");
+        }
+    }//GEN-LAST:event_jButton42ActionPerformed
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        if (jComboBox6.getSelectedItem().equals("Seleccione una Estacion")) {
+            JOptionPane.showMessageDialog(null, "Seleccione una Estacion para modificar");
+        } else {
+            jFrameEstacion.setVisible(true);
+            jFrameEstacion.pack();
+            jTextField19.setText((String) jComboBox6.getSelectedItem());
+            DAOEmpleado empleado = new DAOEmpleado();
+            ArrayList<Empleado> datos;
+            datos = empleado.listarEmpleados();
+            String[] dato = new String[datos.size() + 1];
+            for (int i = 0; i < datos.size(); i++) {
+                if (i == 0) {
+                    dato[0] = "Seleccione un Gerente";
+                    dato[i + 1] = String.valueOf(datos.get(i).getEmpleado_id());
+                } else {
+                    dato[i + 1] = String.valueOf(datos.get(i).getEmpleado_id());
+                }
+            }
+
+            DefaultComboBoxModel m3 = new DefaultComboBoxModel(dato);
+            jComboBox17.setModel(m3);
+        }
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jComboBox17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox17ActionPerformed
+ 
+    //
+    private void jButton43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton43ActionPerformed
+        DAOEstacion est = new DAOEstacion();
+        Estacion esta = new Estacion();
+        esta.setNombre_estacion(jTextField19.getText());
+        jButton40.setEnabled(false);
+        jTextField19.setEnabled(false);
+        jTextField19.setText((String) jComboBox6.getSelectedItem());
+        String id = (String) jComboBox17.getSelectedItem();
+        esta.setDirector_id(Integer.parseInt(id));
+        int numFilas = est.GuardarEstacion(esta);
+        if (numFilas == -2) {
+            JOptionPane.showMessageDialog(null, "Estacion guardado exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al modificar la estacion");
+        }
+        est.cambiarEstacion(esta);
+    }//GEN-LAST:event_jButton43ActionPerformed
+
     /**
      * @param args the command line arguments
      * @throws java.io.IOException
@@ -1327,7 +2072,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame DirectorEstacion;
-    private javax.swing.JButton jButton1;
+    public javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -1338,7 +2083,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
+    public javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
@@ -1349,30 +2094,52 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
-    private javax.swing.JButton jButton3;
+    public javax.swing.JButton jButton3;
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton32;
+    private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton35;
+    private javax.swing.JButton jButton36;
+    private javax.swing.JButton jButton37;
+    private javax.swing.JButton jButton38;
+    private javax.swing.JButton jButton39;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton40;
+    private javax.swing.JButton jButton41;
+    private javax.swing.JButton jButton42;
+    private javax.swing.JButton jButton43;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox jComboBox10;
+    private javax.swing.JComboBox jComboBox11;
+    private javax.swing.JComboBox jComboBox12;
+    private javax.swing.JComboBox jComboBox13;
+    private javax.swing.JComboBox jComboBox14;
+    private javax.swing.JComboBox jComboBox15;
+    private javax.swing.JComboBox jComboBox16;
+    private javax.swing.JComboBox jComboBox17;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
+    private javax.swing.JComboBox jComboBox8;
+    private javax.swing.JComboBox jComboBox9;
+    private javax.swing.JFrame jFrameBus;
     private javax.swing.JFrame jFrameConductor;
     private javax.swing.JFrame jFrameDirectorOperativo;
+    private javax.swing.JFrame jFrameEstacion;
     private javax.swing.JFrame jFrameGerente;
     private javax.swing.JFrame jFramePasajeroGenerico;
     private javax.swing.JFrame jFramePasajeroPersonalizado;
+    private javax.swing.JFrame jFrameRuta;
     private javax.swing.JFrame jFrameServicioCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1420,11 +2187,21 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1439,12 +2216,8 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JPanel jPanelBus;
-    private javax.swing.JPanel jPanelEstacion;
     private javax.swing.JPanel jPanelQuejas;
     private javax.swing.JPanel jPanelQuejasEstado;
-    private javax.swing.JPanel jPanelRuta;
-    private javax.swing.JPanel jPanelRutas;
     private javax.swing.JPanel jPanelTarjetasInteligentes;
     private javax.swing.JPanel jPanelTurno;
     private javax.swing.JSeparator jSeparator1;
@@ -1460,6 +2233,10 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField18;
+    private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;

@@ -15,12 +15,16 @@ public class Viaje {
     int tarjeta_id;
     String placa_bus;
 
-  public void Viaje(String fecha, String hora, int tarjeta_id, String placa_bus){
+  public  Viaje(String fecha, String hora, int tarjeta_id, String placa_bus){
     this.fecha = fecha;
     this.hora = hora;
     this.tarjeta_id = tarjeta_id;
     this.placa_bus = placa_bus;
   }
+
+    public Viaje() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
   public String getFecha(){
     return fecha;

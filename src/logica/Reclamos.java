@@ -22,6 +22,14 @@ public class Reclamos {
         this.descripcion = descripcion;
     }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Reclamos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getNum_tiquete() {
         return num_tiquete;
     }

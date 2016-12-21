@@ -6,6 +6,8 @@
 package controlador;
 
 import accesoDatos.DAOCliente;
+import java.util.ArrayList;
+import logica.Cliente;
 
 /**
  *
@@ -13,4 +15,44 @@ import accesoDatos.DAOCliente;
  */
 public class ControladorCliente {
     DAOCliente daoCliente;
+    
+   public ControladorCliente(){
+        daoCliente=new DAOCliente();
+    }
+   
+     public int  insertarCliente(int  cedula, String nombres, int telefono, int tarjeta_id){
+        Cliente p = new Cliente(cedula,nombres,telefono,tarjeta_id);      
+        
+        //Se llama al dao para guardar
+        System.out.println("Se va a insertar un Cliente");
+        
+        int result =daoCliente.GuardarCliente(p);
+
+        System.out.println("Se  insertó  un  nuevo Cliente");
+        
+        return result;
+
+    }//end
+     
+     public Cliente consultarEmpleado(int cedula){
+        Cliente p = new Cliente();
+        
+         System.out.println("Se va a consultar un Cliente");
+
+        p= daoCliente.consultarCliente(cedula);
+      
+       return p;
+    }
+    
+     public ArrayList<Cliente> listarEmpleados(){
+        ArrayList<Cliente> listaClientes = new ArrayList<>();;
+        
+            System.out.println("Se van a listar los programas");
+        listaClientes = daoCliente.listarClientes();
+        return listaClientes;
+    }
+    
+    public void cerrarConexionBD(){
+        
+    }
 }

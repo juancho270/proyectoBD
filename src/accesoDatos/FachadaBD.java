@@ -17,7 +17,7 @@ public class FachadaBD {
     ResultSet tabla;
     FachadaBD(){
         url = "jdbc:postgresql://localhost:5432/mio";
-        usuario = "mio_usuario";
+        usuario = "usuario_mio";
         password = "usuario";
     }
     
@@ -25,7 +25,7 @@ public class FachadaBD {
             try {
             // Se carga el driver
             Class.forName("org.postgresql.Driver");
-            //System.out.println( "Driver Cargado" );
+            System.out.println( "Driver Cargado" );
             } catch( Exception e ) {
                 System.out.println( "No se pudo cargar el driver." );
             }

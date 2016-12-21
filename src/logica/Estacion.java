@@ -18,6 +18,10 @@ public class Estacion {
       this.director_id = director_id;
     }
 
+    public Estacion() {
+    
+    }
+
     public String getNombre_estacion(){
       return nombre_estacion;
     }

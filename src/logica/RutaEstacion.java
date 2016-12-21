@@ -18,6 +18,10 @@ public class RutaEstacion{
     this.id_estacion = id_e;
   }
 
+    public RutaEstacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
   public String getId_ruta(){
     return id_ruta;
   }
