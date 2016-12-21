@@ -14,19 +14,19 @@ CREATE TABLE  RUTA(
    );
 
  
-INSERT INTO RUTA VALUES('Ruta 1','descripcion ruta1', '2000-11-31','2000-11-31','Diurna'); 
-INSERT INTO RUTA VALUES('Ruta 2','descripcion ruta2', '2000-11-31','2000-11-31','Diurna'); 
-INSERT INTO RUTA VALUES('Ruta 3','descripcion ruta3', '2000-11-31','2000-11-31','Diurna'); 
-INSERT INTO RUTA VALUES('Ruta 4','descripcion ruta4', '2000-11-31','2000-11-31','Nocturna'); 
-INSERT INTO RUTA VALUES('Ruta 5','descripcion ruta5','2000-11-31','2000-11-31','Diurna'); 
-INSERT INTO RUTA VALUES('Ruta 6','descripcion ruta6', '2000-11-31','2000-11-31','Diurna'); 
-INSERT INTO RUTA VALUES('Ruta 7','descripcion ruta7', '2000-11-31','2000-11-31','Nocturna'); 
-INSERT INTO RUTA VALUES('Ruta 8','descripcion ruta8', '2000-11-31','2000-11-31','Diurna'); 
-INSERT INTO RUTA VALUES('Ruta 9','descripcion ruta9', '2000-11-31','2000-11-31','Nocturna'); 
-INSERT INTO RUTA VALUES('Ruta 10','descripcion ruta10', '2000-11-31','2000-11-31','Diurna'); 
-INSERT INTO RUTA VALUES('Ruta 11','descripcion ruta11', '2000-11-31','2000-11-31','Nocturna'); 
-INSERT INTO RUTA VALUES('Ruta 12','descripcion ruta12', '2000-11-31','2000-11-31','Diurna'); 
-INSERT INTO RUTA VALUES('Ruta 13','descripcion ruta13', '2000-11-31','2000-11-31','Diurna'); 
+INSERT INTO RUTA VALUES('Ruta 1','descripcion ruta1', '2000-11-11','2000-11-11','Diurna'); 
+INSERT INTO RUTA VALUES('Ruta 2','descripcion ruta2', '2000-11-11','2000-11-11','Diurna'); 
+INSERT INTO RUTA VALUES('Ruta 3','descripcion ruta3', '2000-11-11','2000-11-11','Diurna'); 
+INSERT INTO RUTA VALUES('Ruta 4','descripcion ruta4', '2000-11-11','2000-11-11','Nocturna'); 
+INSERT INTO RUTA VALUES('Ruta 5','descripcion ruta5','2000-11-11','2000-11-11','Diurna'); 
+INSERT INTO RUTA VALUES('Ruta 6','descripcion ruta6', '2000-11-11','2000-11-11','Diurna'); 
+INSERT INTO RUTA VALUES('Ruta 7','descripcion ruta7', '2000-11-11','2000-11-11','Nocturna'); 
+INSERT INTO RUTA VALUES('Ruta 8','descripcion ruta8', '2000-11-11','2000-11-11','Diurna'); 
+INSERT INTO RUTA VALUES('Ruta 9','descripcion ruta9', '2000-11-11','2000-11-11','Nocturna'); 
+INSERT INTO RUTA VALUES('Ruta 10','descripcion ruta10', '2000-11-11','2000-11-11','Diurna'); 
+INSERT INTO RUTA VALUES('Ruta 11','descripcion ruta11', '2000-11-11','2000-11-11','Nocturna'); 
+INSERT INTO RUTA VALUES('Ruta 12','descripcion ruta12', '2000-11-11','2000-11-11','Diurna'); 
+INSERT INTO RUTA VALUES('Ruta 13','descripcion ruta13', '2000-11-11','2000-11-11','Diurna'); 
 
 
    
@@ -93,11 +93,17 @@ CREATE TABLE  T_PERSONALIZADA
 	CONSTRAINT T_PERSONALIZADA_FK FOREIGN KEY (tarjeta_id) REFERENCES TARJETA (tarjeta_id));
 	
 	
-INSERT INTO T_PERSONALIZADA VALUES(3,0);	
-INSERT INTO T_PERSONALIZADA VALUES(6,3);	
-INSERT INTO T_PERSONALIZADA VALUES(8,3);	
-INSERT INTO T_PERSONALIZADA VALUES(9,3);	
-INSERT INTO T_PERSONALIZADA VALUES(11,3);	
+	
+INSERT INTO T_PERSONALIZADA VALUES(3,0);
+INSERT INTO T_PERSONALIZADA VALUES(6,0);
+INSERT INTO T_PERSONALIZADA VALUES(8,0);
+INSERT INTO T_PERSONALIZADA VALUES(9,0);
+INSERT INTO T_PERSONALIZADA VALUES(15,0);
+INSERT INTO T_PERSONALIZADA VALUES(5,0);
+INSERT INTO T_PERSONALIZADA VALUES(10,0);
+INSERT INTO T_PERSONALIZADA VALUES(4,0);
+INSERT INTO T_PERSONALIZADA VALUES(7,0);
+INSERT INTO T_PERSONALIZADA VALUES(11,0);	
 	
 
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -114,24 +120,24 @@ CREATE TABLE  VIAJE
   CONSTRAINT tarjeta_id_fk FOREIGN KEY (tarjeta_id) REFERENCES TARJETA (tarjeta_id)
    );
 
-INSERT INTO VIAJE ('2016-08-15', '05:45 AM', 1,'ABC-123');   
-INSERT INTO VIAJE ('2016-08-15', '05:45 AM', 2,'ABC-123');   
-INSERT INTO VIAJE ('2016-08-15', '05:45 AM', 3,'ABC-123');   
-INSERT INTO VIAJE ('2016-08-15', '05:45 AM', 4,'ABC-123');   
-INSERT INTO VIAJE ('2016-08-15', '05:45 AM', 5,'ABC-123');   
-INSERT INTO VIAJE ('2016-08-16', '05:45 AM', 3,'BCD-234');   
-INSERT INTO VIAJE ('2016-08-16', '05:45 AM', 4,'BCD-234');   
-INSERT INTO VIAJE ('2016-08-16', '05:45 AM', 6,'CDE-345');   
-INSERT INTO VIAJE ('2016-08-16', '05:45 AM', 7,'CDE-345');   
-INSERT INTO VIAJE ('2016-08-16', '05:45 AM', 8,'DEF-456');   
-INSERT INTO VIAJE ('2016-08-17', '05:45 AM', 3,'DEF-456');   
-INSERT INTO VIAJE ('2016-08-17', '05:45 AM', 9,'EFG-567');   
-INSERT INTO VIAJE ('2016-08-17', '05:45 AM', 10,'EFG-567');   
-INSERT INTO VIAJE ('2016-08-17', '05:45 AM', 11,'HIJ-890');   
-INSERT INTO VIAJE ('2016-08-17', '05:45 AM', 12,'HIJ-890');   
-INSERT INTO VIAJE ('2016-08-17', '05:45 PM', 3,'BCD-234');   
-INSERT INTO VIAJE ('2016-08-17', '05:45 PM', 4,'BCD-234');   
-INSERT INTO VIAJE ('2016-08-17', '05:45 PM', 10,'ABC-123');   
+INSERT INTO VIAJE VALUES ('2016-08-15', '05:45 AM', 1,'ABC-123');   
+INSERT INTO VIAJE VALUES ('2016-08-15', '05:45 AM', 2,'ABC-123');   
+INSERT INTO VIAJE VALUES ('2016-08-15', '05:45 AM', 3,'ABC-123');   
+INSERT INTO VIAJE VALUES ('2016-08-15', '05:45 AM', 4,'ABC-123');   
+INSERT INTO VIAJE VALUES ('2016-08-15', '05:45 AM', 5,'ABC-123');   
+INSERT INTO VIAJE VALUES ('2016-08-16', '05:45 AM', 3,'BCD-234');   
+INSERT INTO VIAJE VALUES ('2016-08-16', '05:45 AM', 4,'BCD-234');   
+INSERT INTO VIAJE VALUES ('2016-08-16', '05:45 AM', 6,'CDE-345');   
+INSERT INTO VIAJE VALUES ('2016-08-16', '05:45 AM', 7,'CDE-345');   
+INSERT INTO VIAJE VALUES ('2016-08-16', '05:45 AM', 8,'DEF-456');   
+INSERT INTO VIAJE VALUES ('2016-08-17', '05:45 AM', 3,'DEF-456');   
+INSERT INTO VIAJE VALUES ('2016-08-17', '05:45 AM', 9,'EFG-567');   
+INSERT INTO VIAJE VALUES ('2016-08-17', '05:45 AM', 10,'EFG-567');   
+INSERT INTO VIAJE VALUES ('2016-08-17', '05:45 AM', 11,'HIJ-890');   
+INSERT INTO VIAJE VALUES ('2016-08-17', '05:45 AM', 12,'HIJ-890');   
+INSERT INTO VIAJE VALUES ('2016-08-17', '05:45 PM', 3,'BCD-234');   
+INSERT INTO VIAJE VALUES ('2016-08-17', '05:45 PM', 4,'BCD-234');   
+INSERT INTO VIAJE VALUES ('2016-08-17', '05:45 PM', 10,'ABC-123');   
 
    
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -149,9 +155,9 @@ CREATE TABLE  EMPLEADO
    );
    
 INSERT INTO EMPLEADO VALUES (1,12345,'Camilo', 'Cruz',342234,'director');
-INSERT INTO EMPLEADO VALUES (2,2314324,'Juan Carlos', 'Viteri',552323,'auxiliar');
+INSERT INTO EMPLEADO VALUES (2,2114324,'Juan Carlos', 'Viteri',552323,'auxiliar');
 INSERT INTO EMPLEADO VALUES (3,546574,'Robert', 'Quiceno',42342,'conductor');
-INSERT INTO EMPLEADO VALUES (4,568585,'Camilo', 'Cruz',4363633,'director');
+INSERT INTO EMPLEADO VALUES (4,568585,'Erik', 'Lopez',4363633,'director');
 
 -----------------------------------------------------------------------------------------------------------------------------
 DROP TABLE if exists ESTACION CASCADE;
@@ -193,8 +199,8 @@ INSERT INTO RUTA_ESTACION VALUES ('Ruta 2','Estacion 2');
 INSERT INTO RUTA_ESTACION VALUES ('Ruta 2','Estacion 3');   
 INSERT INTO RUTA_ESTACION VALUES ('Ruta 2','Estacion 4');   
 INSERT INTO RUTA_ESTACION VALUES ('Ruta 2','Estacion 5');   
-INSERT INTO RUTA_ESTACION VALUES ('Ruta 2','Estacion 6');   
-INSERT INTO RUTA_ESTACION VALUES ('Ruta 2','Estacion 7');   
+INSERT INTO RUTA_ESTACION VALUES ('Ruta 3','Estacion 1');   
+INSERT INTO RUTA_ESTACION VALUES ('Ruta 3','Estacion 2');   
 
 
 
@@ -221,7 +227,7 @@ CREATE TABLE  VENTA_TARJETAS
 	nombre_estacion VARCHAR(30) NOT NULL,
 	fecha DATE,
 	tarjeta_id INTEGER NOT NULL,
-	CONSTRAINT VENTA_TARJETA_PK PRIMARY KEY (auxiliar_id, nombre_estacion),
+	CONSTRAINT VENTA_TARJETA_PK PRIMARY KEY (auxiliar_id, nombre_estacion, tarjeta_id),
   CONSTRAINT auxiliar_id_fk FOREIGN KEY (auxiliar_id) REFERENCES EMPLEADO(empleado_id),
 	CONSTRAINT nombre_est_fk FOREIGN KEY (nombre_estacion) REFERENCES ESTACION (nombre_estacion),
   CONSTRAINT tarjeta_id_fk FOREIGN KEY (tarjeta_id) REFERENCES TARJETA (tarjeta_id)
@@ -258,16 +264,16 @@ CREATE TABLE  CLIENTE
    );
 
 
-INSERT INTO CLIENTE VALUES(123456,'Cliente 1',3113112313,3);
-INSERT INTO CLIENTE VALUES(1242414,'Cliente 2',3113112313,6);
-INSERT INTO CLIENTE VALUES(35232351,'Cliente 3',3113112313,8);
-INSERT INTO CLIENTE VALUES(13413431,'Cliente 4',3113112313,9);
-INSERT INTO CLIENTE VALUES(452335,'Cliente 5',3113112313,15);
-INSERT INTO CLIENTE VALUES(2463634,'Cliente 6',3113112313,5);
-INSERT INTO CLIENTE VALUES(434525,'Cliente 7',3113112313,10);
-INSERT INTO CLIENTE VALUES(645642,'Cliente 8',3113112313,4);
-INSERT INTO CLIENTE VALUES(465634,'Cliente 9',3113112313,7);
-INSERT INTO CLIENTE VALUES(25235,'Cliente 10',3113112313,11);
+INSERT INTO CLIENTE VALUES(123456,'Cliente 1',1111112113,3);
+INSERT INTO CLIENTE VALUES(1242414,'Cliente 2',1111112113,6);
+INSERT INTO CLIENTE VALUES(35232351,'Cliente 3',1111112113,8);
+INSERT INTO CLIENTE VALUES(13413411,'Cliente 4',1111112113,9);
+INSERT INTO CLIENTE VALUES(452335,'Cliente 5',1111112113,15);
+INSERT INTO CLIENTE VALUES(2463634,'Cliente 6',1111112113,5);
+INSERT INTO CLIENTE VALUES(434525,'Cliente 7',1111112113,10);
+INSERT INTO CLIENTE VALUES(645642,'Cliente 8',1111112113,4);
+INSERT INTO CLIENTE VALUES(465634,'Cliente 9',1111112113,7);
+INSERT INTO CLIENTE VALUES(25235,'Cliente 10',1111112113,11);
 
 
 
@@ -282,19 +288,19 @@ CREATE TABLE  RECLAMOS
 	motivo VARCHAR,
 	descripcion VARCHAR,
 	CONSTRAINT RECLAMO_PK PRIMARY KEY (num_tiquete),
-	CONSTRAINT CEDULA_FK FOREIGN KEY cedula_cliente REFERENCES CLIENTE(cedula);
+	CONSTRAINT CEDULA_FK FOREIGN KEY (cedula_cliente) REFERENCES CLIENTE(cedula)
    );
    
 INSERT INTO RECLAMOS VALUES (1,123456,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (1,1242414,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (1,35232351,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (1,13413431,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (1,452335,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (1,2463634,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (1,434525,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (1,645642,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (1,465634,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (1,25235,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
+INSERT INTO RECLAMOS VALUES (2,1242414,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
+INSERT INTO RECLAMOS VALUES (3,35232351,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
+INSERT INTO RECLAMOS VALUES (4,13413411,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
+INSERT INTO RECLAMOS VALUES (5,452335,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
+INSERT INTO RECLAMOS VALUES (6,2463634,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
+INSERT INTO RECLAMOS VALUES (7,434525,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
+INSERT INTO RECLAMOS VALUES (8,645642,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
+INSERT INTO RECLAMOS VALUES (9,465634,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
+INSERT INTO RECLAMOS VALUES (10,25235,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
