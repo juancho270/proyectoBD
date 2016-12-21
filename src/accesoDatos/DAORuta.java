@@ -25,9 +25,12 @@ public class DAORuta {
     
     public int GuardarRuta(Ruta p) {
         String sql_guardar;
-        sql_guardar="INSERT INTO RUTA VALUES (" +
-                p.getNombre()+ ", " + 
-                p.getDescripcion()+ "' )";
+        sql_guardar="INSERT INTO RUTA VALUES ('" +
+                p.getNombre()+ "','" + 
+                p.getDescripcion()+ "','" +
+                p.getFecha_inicio() + "','" +
+                p.getFecha_final() + "','"+
+                p.getFranja_horaria() + "');";
         int numFilas = -1;
         try{
             Connection conn= fachada.getConnection();

@@ -20,8 +20,8 @@ public class ControladorRuta {
     public ControladorRuta() {
         daoRuta = new DAORuta();
     }
-     public int  insertarRuta(String nombre, String Descripcion){
-         Ruta p = new Ruta(nombre,Descripcion);      
+     public int  insertarRuta(String nombre, String Descripcion,String fecha_inicio,String fecha_final,String franja){
+         Ruta p = new Ruta(nombre,Descripcion,fecha_inicio,fecha_final,franja);      
         
         System.out.println("Se va a insertar una Ruta");
         
