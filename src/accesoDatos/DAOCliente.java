@@ -85,13 +85,13 @@ public class DAOCliente {
             Connection conn = fachada.getConnection();
             Statement sentencia = conn.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql_select);
-            
             while(tabla.next()){
                 unCliente = new Cliente();
                 unCliente.setCedula(tabla.getInt(1));
                 unCliente.setNombre(tabla.getString(2));
                 unCliente.setTelefono(tabla.getInt(3));
                 unCliente.setTarjeta_id(tabla.getInt(4));
+                
                 listaClientes.add(unCliente);
             }
             
@@ -99,9 +99,9 @@ public class DAOCliente {
             fachada.closeConnection(conn);
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "         Ha ocurrido un problema, \n consulta con la base de datos fallida", "SIT", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "         Ha ocurrido un problema con la BD, \n consulta con la base de datos fallida", "SIT", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un problema!!", "SIT", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex, "SIT", JOptionPane.ERROR_MESSAGE);
         }
         
         return listaClientes;
