@@ -6,6 +6,7 @@ import accesoDatos.DAOCliente;
 import accesoDatos.DAOEmpleado;
 import accesoDatos.DAOEstacion;
 import accesoDatos.DAORuta;
+import controlador.ControladorEmpleado;
 import controlador.ControladorReportes;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -18,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import logica.Bus;
 import logica.Cliente;
 import logica.Empleado;
@@ -141,6 +143,8 @@ public class Interfaz extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jFrameDirectorOperativo = new javax.swing.JFrame();
         jPanel3 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -629,18 +633,42 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel2.setText("Cedula ");
 
         jButton4.setText("Consultar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Programacion"));
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 642, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -671,7 +699,7 @@ public class Interfaz extends javax.swing.JFrame {
                     .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jFrameConductorLayout = new javax.swing.GroupLayout(jFrameConductor.getContentPane());
@@ -683,8 +711,8 @@ public class Interfaz extends javax.swing.JFrame {
         jFrameConductorLayout.setVerticalGroup(
             jFrameConductorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrameConductorLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jFrameDirectorOperativo.setResizable(false);
@@ -2268,6 +2296,8 @@ public class Interfaz extends javax.swing.JFrame {
         jFrameReportes.pack();
 
         jFrameReportes.setVisible(TRUE);
+        DefaultTableModel modelo = new DefaultTableModel();
+        jTable1.setModel(modelo);
     }//GEN-LAST:event_jButton45ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -2275,6 +2305,8 @@ public class Interfaz extends javax.swing.JFrame {
         this.setVisible(false);
         jFrameConductor.pack();
         jFrameConductor.setVisible(true);
+        DefaultTableModel modelo = new DefaultTableModel();
+        jTable2.setModel(modelo);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox20ActionPerformed
@@ -2287,7 +2319,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jComboBox18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox18ActionPerformed
         // TODO add your handling code here:
-        if (jComboBox18.getSelectedIndex() == 4) {
+        if (jComboBox18.getSelectedIndex() == 3) {
             jLabel65.setVisible(true);
             jComboBox19.setVisible(true);
             jComboBox20.setVisible(true);
@@ -2309,13 +2341,36 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
         ControladorReportes reportes = new ControladorReportes();
         if (jComboBox18.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "Seleccione un reporte", "SIT", WIDTH);
-        } else if (jComboBox18.getSelectedIndex() == 1) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un reporte", "SIT", WIDTH);
+        } else if (jComboBox18.getSelectedIndex() == 3) {
+            String fecha, dia, mes, año;
+            dia = jComboBox19.getSelectedItem().toString();
+            mes = jComboBox20.getSelectedItem().toString();
+            año = jComboBox21.getSelectedItem().toString();
+
+            fecha = "'" + año + "-" + mes + "-" + dia + "'";
+            reportes.reporteF((DefaultTableModel) jTable1.getModel(), fecha);
+        } else {
             DefaultTableModel modelo = new DefaultTableModel();
             jTable1.setModel(modelo);
-            reportes.reporte1((DefaultTableModel) jTable1.getModel());
+            reportes.reportes((DefaultTableModel) jTable1.getModel(), jComboBox18.getSelectedIndex());
         }
     }//GEN-LAST:event_jButton44ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+       
+        ControladorEmpleado empleado = new ControladorEmpleado();
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Digite una cedula");
+        } else if (empleado.esEmpleado(jTextField1.getText())) {
+            empleado.turnos((DefaultTableModel) jTable2.getModel(), jTextField1.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "La cedula introducida no corresponde a ningun conductor registrado");
+        }
+
+
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2482,6 +2537,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelTarjetasInteligentes;
     private javax.swing.JPanel jPanelTurno;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -2489,6 +2545,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
