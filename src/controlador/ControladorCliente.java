@@ -44,10 +44,10 @@ public class ControladorCliente {
        return p;
     }
     
-     public ArrayList<Cliente> listarEmpleados(){
+     public ArrayList<Cliente> listarClientes(){
         ArrayList<Cliente> listaClientes = new ArrayList<>();;
         
-            System.out.println("Se van a listar los programas");
+            System.out.println("Se van a listar los clientes");
         listaClientes = daoCliente.listarClientes();
         return listaClientes;
     }

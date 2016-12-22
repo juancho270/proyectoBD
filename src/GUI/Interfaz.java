@@ -25,12 +25,15 @@ import logica.Cliente;
 import logica.Empleado;
 import logica.Estacion;
 import logica.Ruta;
-
+import controlador.*;
+import logica.TPersonalizada;
 //Importaciones
 //Inicio Clase Servidor
+
 public class Interfaz extends javax.swing.JFrame {
 
     Implementacion implementacion;
+    ArrayList<Cliente> listaClientes;
 
     //Constructor 
     public Interfaz(Implementacion obj) {
@@ -548,9 +551,6 @@ public class Interfaz extends javax.swing.JFrame {
                         .addComponent(jLabel46))
                     .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
@@ -564,12 +564,19 @@ public class Interfaz extends javax.swing.JFrame {
                                     .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jButton31)
                                         .addComponent(jButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jLabel43)
                                 .addComponent(jLabel42)
-                                .addComponent(jLabel41)
                                 .addComponent(jLabel40)
                                 .addComponent(jComboBox7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel47)))
+                    .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel41))
+                    .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel43))
+                    .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel48)))
@@ -598,19 +605,19 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
-                        .addComponent(jLabel43)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel40)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel41)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel42)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton17)
+                        .addComponent(jLabel43)
                         .addGap(18, 18, 18)
+                        .addComponent(jButton17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel48)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                        .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton32)
                             .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
@@ -625,7 +632,7 @@ public class Interfaz extends javax.swing.JFrame {
                         .addGap(54, 54, 54))
                     .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
                         .addComponent(jPanelTarjetasInteligentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(47, Short.MAX_VALUE))))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -1838,6 +1845,10 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ControladorTPersonalizada controlador = new ControladorTPersonalizada();
+        ControladorCliente controladorCLi = new ControladorCliente();
+        ControladorTarjeta controladorTar = new ControladorTarjeta();
+        listaClientes = controladorCLi.listarClientes();
         int estado = JOptionPane.showConfirmDialog(null, "Posee una tarjeta inteligente");
         //si la respuesta es verdadera
         if (estado == 0) {
@@ -1845,6 +1856,35 @@ public class Interfaz extends javax.swing.JFrame {
             jFramePasajeroPersonalizado.pack();
             jPanelTarjetasInteligentes.setVisible(true);
             this.setVisible(FALSE);
+            int num = Integer.parseInt(JOptionPane.showInputDialog("ingrese el No de su tarjeta"));
+            TPersonalizada tarP = controlador.consultarTPersonalizada(num);
+            if (tarP != null) {
+                Cliente cli = null;
+                for (int i = 0; i < listaClientes.size(); i++) {
+                    if (tarP.getTarjeta_id() == listaClientes.get(i).getTarjeta_id()) {
+                        cli = listaClientes.get(i);
+                        System.out.println("cliente: " + cli.getNombre());
+                        break;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "no tiene usuario asociado a la tarjeta", "SIT", JOptionPane.ERROR_MESSAGE);
+                        cli = null;
+                    }
+                }
+                if (cli != null) {
+                    jLabel40.setText("Usuario: "+ cli.getNombre());
+                    jLabel41.setText("Cedula: " + cli.getCedula());
+                    jLabel42.setText("Telefono: "+ cli.getTelefono());
+                    jLabel43.setText("saldo Tarjeta: " + tarP.getSaldo());
+                    jLabel38.setText(""+cli.getTarjeta_id());
+                    jFramePasajeroPersonalizado.setVisible(true);
+                    jFramePasajeroPersonalizado.pack();
+                    jPanelTarjetasInteligentes.setVisible(true);
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "no existe tarjeta con ese ID", "SIT", JOptionPane.ERROR_MESSAGE);
+            }
+
         }
         //si la respuesta es negativa
         if (estado == 1) {
