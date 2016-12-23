@@ -9,7 +9,7 @@ package logica;
  *
  * @author root
  */
-public class TPersonalizada {
+public class TPersonalizada extends Tarjeta{
     int tarjeta_id;
     int saldo;
     int avances_disponibles;
@@ -24,10 +24,12 @@ public class TPersonalizada {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
     public int getTarjeta_id(){
       return tarjeta_id;
     }
 
+    @Override
     public int getSaldo(){
       return saldo;
     }
@@ -36,10 +38,12 @@ public class TPersonalizada {
       return avances_disponibles;
     }
 
+    @Override
     public void setTarjeta_id(int tarjeta_id){
       this.tarjeta_id = tarjeta_id;
     }
 
+    @Override
     public void setSaldo(int saldo){
       this.saldo = saldo;
     }

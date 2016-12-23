@@ -34,7 +34,7 @@ public class ControladorCliente {
 
     }//end
      
-     public Cliente consultarEmpleado(int cedula){
+     public Cliente consultarCliente(int cedula){
         Cliente p = new Cliente();
         
          System.out.println("Se va a consultar un Cliente");
@@ -51,6 +51,23 @@ public class ControladorCliente {
         listaClientes = daoCliente.listarClientes();
         return listaClientes;
     }
+     
+     public void cambiarNombreTelefonoCLiente(String nom,int telefono, int ced){
+         Cliente cli = daoCliente.consultarCliente(ced);
+         cli.setNombre(nom);
+         cli.setTelefono(telefono);
+         System.out.println("controlador.ControladorCliente.cambiarTelefonoCLiente()"+cli.getTelefono());
+         int resultado = daoCliente.cambiarNombre(cli);
+         int resul = daoCliente.cambiarTelefono(cli);
+         
+     }
+     
+     public void cambiarTelefonoCLiente(int telefono, int ced){
+         Cliente cli = daoCliente.consultarCliente(ced);
+         cli.setTelefono(telefono);
+         int resultado = daoCliente.cambiarTelefono(cli);
+         
+     }
     
     public void cerrarConexionBD(){
         

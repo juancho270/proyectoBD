@@ -125,7 +125,7 @@ public class DAOCliente {
     }
     
      public int cambiarTelefono(Cliente cli){
-        String update_statement = "UPDATE CLIENTE SET telefono = '" + cli.getTelefono()+ "' WHERE cedula = " + cli.getCedula();
+        String update_statement = "UPDATE CLIENTE SET telefono = " + cli.getTelefono()+ " WHERE cedula = " + cli.getCedula();
         int numFilas = -1;
         try {
             Connection conn = fachada.getConnection();

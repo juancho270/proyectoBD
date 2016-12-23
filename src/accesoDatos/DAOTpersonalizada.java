@@ -44,10 +44,18 @@ public class DAOTpersonalizada {
         }
     }
 
+    /**
+     * SELECT per.id, tar.saldo
+FROM TARJETA tar NATURAL JOIN T_PERSONALIZADA per
+     * @param tarjeta_id
+     * @return 
+     */
     public TPersonalizada consultarTPersonalizada(int tarjeta_id) {
         TPersonalizada tper = new TPersonalizada();
         String sql_select;
-        sql_select = "SELECT * FROM T_PERSONALIZADA WHERE tarjeta_id = "+tarjeta_id;
+        sql_select = "SELECT per.tarjeta_id, per.avances_disponibles, tar.saldo, tar.estado "
+                + "FROM TARJETA tar NATURAL JOIN T_PERSONALIZADA per "
+                + "WHERE tarjeta_id = "+tarjeta_id;
         try{
             Connection conn= fachada.getConnection();
             System.out.println("consultando en la bd");
@@ -58,7 +66,8 @@ public class DAOTpersonalizada {
                 
                tper.setTarjeta_id(tabla.getInt(1));
                tper.setAvances_disponibles(tabla.getInt(2));
-               
+               tper.setSaldo(tabla.getInt(3));
+               tper.setEstado(tabla.getBoolean(4));
               
               System.out.println("ok");
             }

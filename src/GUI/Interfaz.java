@@ -110,12 +110,7 @@ public class Interfaz extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel12 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
@@ -133,8 +128,8 @@ public class Interfaz extends javax.swing.JFrame {
         jButton32 = new javax.swing.JButton();
         jLabel47 = new javax.swing.JLabel();
         jComboBox7 = new javax.swing.JComboBox<>();
-        jTextField12 = new javax.swing.JTextField();
         jLabel48 = new javax.swing.JLabel();
+        jComboBox18 = new javax.swing.JComboBox<>();
         jFrameConductor = new javax.swing.JFrame();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -389,27 +384,27 @@ public class Interfaz extends javax.swing.JFrame {
 
         jTextField3.setEditable(false);
 
-        jLabel8.setText("Nombre ");
+        jLabel8.setText("Nombre: ");
 
         jTextField4.setEditable(false);
         jTextField4.setFocusable(false);
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
         jTextField5.setEditable(false);
         jTextField5.setFocusable(false);
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
 
-        jLabel9.setText("Apellido");
+        jLabel9.setText("Telefono:");
 
-        jTextField6.setEditable(false);
-        jTextField6.setFocusable(false);
-
-        jLabel10.setText("Cedula");
-
-        jTextField7.setEditable(false);
-        jTextField7.setFocusable(false);
-
-        jLabel11.setText("Telefono");
-
-        jButton8.setText("Verificar");
+        jButton8.setText("Modificar");
         jButton8.setEnabled(false);
         jButton8.setFocusable(false);
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -422,36 +417,30 @@ public class Interfaz extends javax.swing.JFrame {
         jPanelTarjetasInteligentes.setLayout(jPanelTarjetasInteligentesLayout);
         jPanelTarjetasInteligentesLayout.setHorizontalGroup(
             jPanelTarjetasInteligentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTarjetasInteligentesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTarjetasInteligentesLayout.createSequentialGroup()
                 .addGroup(jPanelTarjetasInteligentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTarjetasInteligentesLayout.createSequentialGroup()
+                    .addGroup(jPanelTarjetasInteligentesLayout.createSequentialGroup()
                         .addGroup(jPanelTarjetasInteligentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelTarjetasInteligentesLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelTarjetasInteligentesLayout.createSequentialGroup()
-                                .addGroup(jPanelTarjetasInteligentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel11))
-                                .addGap(21, 21, 21)
-                                .addGroup(jPanelTarjetasInteligentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton8)
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(138, 138, 138))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTarjetasInteligentesLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTarjetasInteligentesLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel9)))
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanelTarjetasInteligentesLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanelTarjetasInteligentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                    .addComponent(jTextField3)
+                    .addComponent(jTextField5)
+                    .addComponent(jTextField4))
+                .addGap(271, 271, 271))
         );
         jPanelTarjetasInteligentesLayout.setVerticalGroup(
             jPanelTarjetasInteligentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -460,27 +449,19 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGroup(jPanelTarjetasInteligentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(jPanelTarjetasInteligentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jButton8)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanelTarjetasInteligentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanelTarjetasInteligentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelTarjetasInteligentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(80, 80, 80))
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(18, 18, 18)
+                .addComponent(jButton8)
+                .addGap(56, 56, 56))
         );
 
         jLabel38.setText("Numero de PIN");
@@ -518,6 +499,8 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel48.setText("Estacion Destino");
 
+        jComboBox18.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jFramePasajeroPersonalizadoLayout = new javax.swing.GroupLayout(jFramePasajeroPersonalizado.getContentPane());
         jFramePasajeroPersonalizado.getContentPane().setLayout(jFramePasajeroPersonalizadoLayout);
         jFramePasajeroPersonalizadoLayout.setHorizontalGroup(
@@ -529,7 +512,11 @@ public class Interfaz extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addComponent(jLabel45)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel46))
+                        .addComponent(jLabel46)
+                        .addGap(95, 95, 95)
+                        .addComponent(jLabel39)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel38))
                     .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -540,47 +527,35 @@ public class Interfaz extends javax.swing.JFrame {
                                             .addComponent(jLabel44)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBox18, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
                                     .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jButton31)
                                         .addComponent(jButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addComponent(jLabel42)
                                 .addComponent(jLabel40)
                                 .addComponent(jComboBox7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel47)))
-                    .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel41))
-                    .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel43))
-                    .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel48)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFramePasajeroPersonalizadoLayout.createSequentialGroup()
-                        .addComponent(jLabel39)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel38))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFramePasajeroPersonalizadoLayout.createSequentialGroup()
-                        .addComponent(jPanelTarjetasInteligentes, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)))
-                .addContainerGap())
+                            .addComponent(jLabel47)
+                            .addComponent(jLabel41)
+                            .addComponent(jLabel43)
+                            .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel48))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanelTarjetasInteligentes, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(24, 24, 24))
         );
         jFramePasajeroPersonalizadoLayout.setVerticalGroup(
             jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel38)
-                    .addComponent(jLabel39)
-                    .addComponent(jLabel45)
-                    .addComponent(jLabel46))
+                .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel45)
+                            .addComponent(jLabel46)))
+                    .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel39)
+                        .addComponent(jLabel38)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -598,9 +573,9 @@ public class Interfaz extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel48)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton32)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(jFramePasajeroPersonalizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -613,7 +588,7 @@ public class Interfaz extends javax.swing.JFrame {
                         .addGap(54, 54, 54))
                     .addGroup(jFramePasajeroPersonalizadoLayout.createSequentialGroup()
                         .addComponent(jPanelTarjetasInteligentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(47, Short.MAX_VALUE))))
+                        .addContainerGap(53, Short.MAX_VALUE))))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -1661,10 +1636,11 @@ public class Interfaz extends javax.swing.JFrame {
                         cli = listaClientes.get(i);
                         System.out.println("cliente: " + cli.getNombre());
                         break;
-                    } else {
-                        JOptionPane.showMessageDialog(null, "no tiene usuario asociado a la tarjeta", "SIT", JOptionPane.ERROR_MESSAGE);
-                        cli = null;
-                    }
+                    } //else {
+                        //JOptionPane.showMessageDialog(null, "no tiene usuario asociado a la tarjeta", "SIT", JOptionPane.ERROR_MESSAGE);
+                        
+                        //cli = null;
+                    //}
                 }
                 if (cli != null) {
                     jLabel40.setText("Usuario: "+ cli.getNombre());
@@ -2106,24 +2082,42 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton43ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        jTextField3.setEditable(true);
-        jTextField3.setFocusable(true);
+        jTextField3.setEditable(false);
+        jTextField3.setFocusable(false);
+        String tarjeta = jLabel38.getText();
+        jTextField3.setText(tarjeta);
+        String nom = jLabel40.getText().substring(9);
         jTextField4.setEditable(true);
         jTextField4.setFocusable(true);
+        jTextField4.setEnabled(true);
+        jTextField4.setText(nom);
+        String num = jLabel42.getText().substring(10);
         jTextField5.setEditable(true);
         jTextField5.setFocusable(true);
-        jTextField6.setEditable(true);
-        jTextField6.setFocusable(true);
-        jTextField7.setEditable(true);
-        jTextField7.setFocusable(true);
+        jTextField5.setEnabled(true);
+        jTextField5.setText(num);
         jButton8.setEnabled(true);
         jButton8.setFocusable(true);
 
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+        ControladorCliente controladorCLi = new ControladorCliente();
+        int ced = Integer.parseInt(jLabel41.getText().substring(8));
+        String nom = jTextField4.getText();
+        int tel = Integer.parseInt(jTextField5.getText());
+        controladorCLi.cambiarNombreTelefonoCLiente(nom, tel, ced);
+        System.out.println("GUI.Interfaz.jButton8ActionPerformed()"+tel+""+ced);
+       // controladorCLi.cambiarTelefonoCLiente(tel, ced);
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        jTextField4.setText("");
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        jTextField4.setText("");
+    }//GEN-LAST:event_jTextField5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2184,6 +2178,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox15;
     private javax.swing.JComboBox jComboBox16;
     private javax.swing.JComboBox jComboBox17;
+    private javax.swing.JComboBox<String> jComboBox18;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
@@ -2202,8 +2197,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JFrame jFrameRuta;
     private javax.swing.JFrame jFrameServicioCliente;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -2279,7 +2272,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelQuejasEstado;
     private javax.swing.JPanel jPanelTarjetasInteligentes;
     private javax.swing.JPanel jPanelTurno;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -2288,7 +2280,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
@@ -2300,8 +2291,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
