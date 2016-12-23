@@ -158,7 +158,10 @@ INSERT INTO EMPLEADO VALUES (1,12345,'Camilo', 'Cruz',342234,'director');
 INSERT INTO EMPLEADO VALUES (2,2114324,'Juan Carlos', 'Viteri',552323,'auxiliar');
 INSERT INTO EMPLEADO VALUES (3,546574,'Robert', 'Quiceno',42342,'conductor');
 INSERT INTO EMPLEADO VALUES (4,568585,'Erik', 'Lopez',4363633,'director');
-
+INSERT INTO EMPLEADO VALUES (5,12345,'Marco', 'Valencia',342234,'director');
+INSERT INTO EMPLEADO VALUES (6,2114324,'Juan Carlos', 'Viteri',552323,'auxiliar');
+INSERT INTO EMPLEADO VALUES (7,241156,'Diego', 'Montagud',42342,'conductor');
+INSERT INTO EMPLEADO VALUES (8,568585,'David', 'Mera',4363633,'director');
 -----------------------------------------------------------------------------------------------------------------------------
 DROP TABLE if exists ESTACION CASCADE;
 CREATE TABLE  ESTACION
@@ -210,13 +213,25 @@ DROP TABLE if exists MANEJO_BUSES CASCADE;
 CREATE TABLE  MANEJO_BUSES(
   conductor_id INTEGER NOT NULL,
 	placa_bus VARCHAR(15) NOT NULL,
-	turno TIME NOT NULL,
-	CONSTRAINT MANEJO_BUS_PK PRIMARY KEY (conductor_id, placa_bus),
+	turno VARCHAR NOT NULL,
+	CONSTRAINT MANEJO_BUS_PK PRIMARY KEY (conductor_id, placa_bus,turno),
   CONSTRAINT conductor_id_fk FOREIGN KEY (conductor_id) REFERENCES EMPLEADO (empleado_id),
   CONSTRAINT placa_bus_fk FOREIGN KEY (placa_bus) REFERENCES BUS (placa)
    );
    
 
+INSERT INTO MANEJO_BUSES VALUES(3, 'ABC-123', 'turno 1');
+INSERT INTO MANEJO_BUSES VALUES(7, 'ABC-123', 'turno 2');
+INSERT INTO MANEJO_BUSES VALUES(3, 'DEF-456', 'turno 3');
+INSERT INTO MANEJO_BUSES VALUES(7, 'DEF-456', 'turno 4');
+INSERT INTO MANEJO_BUSES VALUES(3, 'EFG-567', 'turno 1');
+INSERT INTO MANEJO_BUSES VALUES(3, 'EFG-567', 'turno 2');
+INSERT INTO MANEJO_BUSES VALUES(7, 'EFG-567', 'turno 3');
+INSERT INTO MANEJO_BUSES VALUES(3, 'EFG-567', 'turno 4');
+INSERT INTO MANEJO_BUSES VALUES(3, 'HIJ-890', 'turno 1');
+INSERT INTO MANEJO_BUSES VALUES(7, 'HIJ-890', 'turno 2');
+INSERT INTO MANEJO_BUSES VALUES(3, 'IJK-901', 'turno 3');
+INSERT INTO MANEJO_BUSES VALUES(7, 'IJK-901', 'turno 4');
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -257,23 +272,23 @@ CREATE TABLE  CLIENTE
    (
   cedula INTEGER NOT NULL,
 	nombre VARCHAR (50),
-	telefono INTEGER,
+	telefono BIGINT,
 	tarjeta_id INTEGER,
 	CONSTRAINT CLIENTE_PK PRIMARY KEY (cedula),
   CONSTRAINT tarjeta_id_fk FOREIGN KEY (tarjeta_id) REFERENCES T_PERSONALIZADA (tarjeta_id)
    );
 
 
-INSERT INTO CLIENTE VALUES(123456,'Cliente 1',1111112113,3);
-INSERT INTO CLIENTE VALUES(1242414,'Cliente 2',1111112113,6);
-INSERT INTO CLIENTE VALUES(35232351,'Cliente 3',1111112113,8);
-INSERT INTO CLIENTE VALUES(13413411,'Cliente 4',1111112113,9);
-INSERT INTO CLIENTE VALUES(452335,'Cliente 5',1111112113,15);
-INSERT INTO CLIENTE VALUES(2463634,'Cliente 6',1111112113,5);
-INSERT INTO CLIENTE VALUES(434525,'Cliente 7',1111112113,10);
-INSERT INTO CLIENTE VALUES(645642,'Cliente 8',1111112113,4);
-INSERT INTO CLIENTE VALUES(465634,'Cliente 9',1111112113,7);
-INSERT INTO CLIENTE VALUES(25235,'Cliente 10',1111112113,11);
+INSERT INTO CLIENTE VALUES(123456,'Juan Antonio Bautista',3135226352,3);
+INSERT INTO CLIENTE VALUES(1242414,'Alirio Suarez ',3045972833,6);
+INSERT INTO CLIENTE VALUES(35232351,'Alejandro Jimenez ',3113285428,8);
+INSERT INTO CLIENTE VALUES(13413411,'Marianela Cordero ',3105986487,9);
+INSERT INTO CLIENTE VALUES(452335,'Marcelo Camero ',3206310568,15);
+INSERT INTO CLIENTE VALUES(2463634,'Carmelo de Luca ',3105412398,5);
+INSERT INTO CLIENTE VALUES(434525,'Maria Aurora Zambrano ',3045376421,10);
+INSERT INTO CLIENTE VALUES(645642,'Luis Sosa ',3006664109,4);
+INSERT INTO CLIENTE VALUES(465634,'Jose Manuel Herrera ',3017891452,7);
+INSERT INTO CLIENTE VALUES(25235,'Luis Manuel Villegas ',3001784236,11);
 
 
 
@@ -287,20 +302,22 @@ CREATE TABLE  RECLAMOS
 	fecha DATE,
 	motivo VARCHAR,
 	descripcion VARCHAR,
+	director_id INTEGER,
 	CONSTRAINT RECLAMO_PK PRIMARY KEY (num_tiquete),
-	CONSTRAINT CEDULA_FK FOREIGN KEY (cedula_cliente) REFERENCES CLIENTE(cedula)
+	CONSTRAINT CEDULA_FK FOREIGN KEY (cedula_cliente) REFERENCES CLIENTE(cedula),
+	CONSTRAINT DIRECTOR_FK FOREIGN KEY (director_id) REFERENCES EMPLEADO(empleado_id)
    );
    
-INSERT INTO RECLAMOS VALUES (1,123456,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (2,1242414,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (3,35232351,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (4,13413411,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (5,452335,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (6,2463634,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (7,434525,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (8,645642,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (9,465634,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
-INSERT INTO RECLAMOS VALUES (10,25235,'2016-08-15','Demora','El bus se demoró 2 horas en pasar');   
+INSERT INTO RECLAMOS VALUES (1,123456,'2016-08-15','Demora','El bus se demoró 2 horas en pasar',1);   
+INSERT INTO RECLAMOS VALUES (2,1242414,'2016-08-15','Demora','El bus se demoró 2 horas en pasar',1);   
+INSERT INTO RECLAMOS VALUES (3,35232351,'2016-08-15','Demora','El bus se demoró 2 horas en pasar',1);   
+INSERT INTO RECLAMOS VALUES (4,13413411,'2016-08-15','Demora','El bus se demoró 2 horas en pasar',1);   
+INSERT INTO RECLAMOS VALUES (5,452335,'2016-08-15','Demora','El bus se demoró 2 horas en pasar',1);   
+INSERT INTO RECLAMOS VALUES (6,2463634,'2016-08-15','Demora','El bus se demoró 2 horas en pasar',4);   
+INSERT INTO RECLAMOS VALUES (7,434525,'2016-08-15','Demora','El bus se demoró 2 horas en pasar',4);   
+INSERT INTO RECLAMOS VALUES (8,645642,'2016-08-15','Demora','El bus se demoró 2 horas en pasar',4);   
+INSERT INTO RECLAMOS VALUES (9,465634,'2016-08-15','Demora','El bus se demoró 2 horas en pasar',4);   
+INSERT INTO RECLAMOS VALUES (10,25235,'2016-08-15','Demora','El bus se demoró 2 horas en pasar',4);   
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
